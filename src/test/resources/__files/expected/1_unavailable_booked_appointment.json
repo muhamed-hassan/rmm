@@ -1,0 +1,10 @@
+{
+  "slot": {
+    "id": 777,
+    "start": 1500,
+    "end": 1550,
+    "doctor": "mjones"
+  },
+  "patient": "jsmith",
+  "status": "Slot not available"
+}

@@ -1,0 +1,8 @@
+{
+  "slot": {
+    "start": 1500,
+    "end": 1550,
+    "doctor": "mjones"
+  },
+  "patient": "jsmith"
+}

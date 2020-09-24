@@ -1,0 +1,14 @@
+{
+  "slots": [
+    {
+      "start": 1400,
+      "end": 1450,
+      "doctor": "mjones"
+    },
+    {
+      "start": 1600,
+      "end": 1650,
+      "doctor": "mjones"
+    }
+  ]
+}
