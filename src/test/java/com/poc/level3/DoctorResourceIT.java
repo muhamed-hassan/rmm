@@ -1,12 +1,11 @@
 package com.poc.level3;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.skyscreamer.jsonassert.JSONAssert;
-import org.springframework.http.HttpStatus;
-import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
@@ -21,14 +20,12 @@ public class DoctorResourceIT extends BaseIT {
         params.add("status", "open");
         String expectedResponse = readJsonFrom(EXPECTED_MAPPINGS_DIR + "3_available_slots.json");
 
-        MockHttpServletResponse response = mockMvc.perform(get("/level3/doctors/mjones/slots")
+        ResultActions resultActions = mockMvc.perform(get("/level3/doctors/mjones/slots")
                                                             .params(params)
-                                                            .accept("application/hal+json"))
-                                                    .andReturn()
-                                                    .getResponse();
+                                                            .accept("application/hal+json"));
 
-        Assertions.assertEquals(HttpStatus.OK.value(), response.getStatus());
-        JSONAssert.assertEquals(expectedResponse, response.getContentAsString(), true);
+        resultActions.andExpect(status().isOk())
+                        .andExpect(content().json(expectedResponse, true));
     }
 
 }

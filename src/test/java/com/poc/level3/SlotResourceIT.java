@@ -2,13 +2,13 @@ package com.poc.level3;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.skyscreamer.jsonassert.JSONAssert;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.test.web.servlet.ResultActions;
 
 import com.poc.BaseIT;
 
@@ -18,40 +18,34 @@ public class SlotResourceIT extends BaseIT {
     public void testBookAppointment_WhenSlotIsAvailable_ThenReturnTheLocationOfBookedAppointment() throws Exception {
         String payload = readJsonFrom(SEED_MAPPINGS_DIR + "3_booking_details_request.json");
 
-        MockHttpServletResponse response = mockMvc.perform(post("/level3/slots/1234")
+        ResultActions resultActions = mockMvc.perform(post("/level3/slots/1234")
                                                             .contentType(MediaType.APPLICATION_JSON_VALUE)
-                                                            .content(payload))
-                                                    .andReturn()
-                                                    .getResponse();
+                                                            .content(payload));
 
-        Assertions.assertEquals(HttpStatus.CREATED.value(), response.getStatus());
-        Assertions.assertTrue(response.getHeader("location").endsWith("/level3/slots/1234/appointment"));
+        resultActions.andExpect(status().isCreated())
+                        .andExpect(header().exists("Location"));
     }
 
     @Test
     public void testBookAppointment_WhenSlotIsNotAvailable_ThenReturnWithConflict() throws Exception {
         String payload = readJsonFrom(SEED_MAPPINGS_DIR + "3_booking_details_request.json");
 
-        MockHttpServletResponse response = mockMvc.perform(post("/level3/slots/777")
+        ResultActions resultActions = mockMvc.perform(post("/level3/slots/777")
                                                             .contentType(MediaType.APPLICATION_JSON_VALUE)
-                                                            .content(payload))
-                                                    .andReturn()
-                                                    .getResponse();
+                                                            .content(payload));
 
-        Assertions.assertEquals(HttpStatus.CONFLICT.value(), response.getStatus());
+        resultActions.andExpect(status().isConflict());
     }
 
    @Test
     public void testBookAppointment_WhenTheSlotIsAvailable_ThenReturnBookedAppointment() throws Exception {
         String expectedResponse = readJsonFrom(EXPECTED_MAPPINGS_DIR + "3_available_booked_appointment.json");
 
-        MockHttpServletResponse response = mockMvc.perform(get("/level3/slots/1234/appointment")
-                                                            .accept("application/hal+json"))
-                                                    .andReturn()
-                                                    .getResponse();
+       ResultActions resultActions = mockMvc.perform(get("/level3/slots/1234/appointment")
+                                                            .accept("application/hal+json"));
 
-        Assertions.assertEquals(HttpStatus.OK.value(), response.getStatus());
-        JSONAssert.assertEquals(expectedResponse, response.getContentAsString(), true);
+       resultActions.andExpect(status().isOk())
+                        .andExpect(content().json(expectedResponse, true));
     }
 
 }
