@@ -1,5 +1,7 @@
 package com.poc.level3.dtos;
 
+import java.util.Objects;
+
 import com.poc.level3.hateos.HateosSupport;
 import com.poc.level3.hateos.Link;
 
@@ -61,24 +63,19 @@ public class Slot3 extends HateosSupport {
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + id;
-        return result;
+        return Objects.hashCode(id);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
+    public boolean equals(Object other) {
+        if (this == other) {
             return true;
-        if (obj == null)
+        }
+        if (other == null || getClass() != other.getClass()) {
             return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Slot3 other = (Slot3) obj;
-        if (id != other.id)
-            return false;
-        return true;
+        }
+        Slot3 that = (Slot3) other;
+        return Objects.equals(id, that.id);
     }
 
 }

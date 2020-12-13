@@ -34,7 +34,7 @@ public class Level0AppointmentService {
     })
     @PostMapping("getOpenSlots")
     public OpenSlotList0 getOpenSlots(@RequestBody OpenSlot0 openSlot) {
-        OpenSlotList0 openSlotList = new OpenSlotList0(new ArrayList<Slot0>());
+        var openSlotList = new OpenSlotList0(new ArrayList<>());
         openSlotList.getSlots().add(new Slot0(1400, 1450, openSlot.getDoctor()));
         openSlotList.getSlots().add(new Slot0(1600, 1650, openSlot.getDoctor()));
         return openSlotList;
@@ -46,7 +46,7 @@ public class Level0AppointmentService {
     })
     @PostMapping("bookAppointment")
     public Appointment0 bookAppointment(@RequestBody BookingDetails0 bookingDetails) {
-        Appointment0 appointment = new Appointment0();
+        var appointment = new Appointment0();
         appointment.setSlot(bookingDetails.getSlot());
         appointment.setPatient(bookingDetails.getPatient());
         if (bookingDetails.getSlot().getStart() == 1400) {

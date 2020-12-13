@@ -33,7 +33,7 @@ public class Level1DoctorResource {
     })
     @PostMapping("{doctorName}")
     public OpenSlotList1 getOpenSlots(@PathVariable String doctorName, @RequestBody OpenSlot1 openSlot) {
-        OpenSlotList1 openSlotList = new OpenSlotList1(new ArrayList<Slot1>());
+        var openSlotList = new OpenSlotList1(new ArrayList<>());
         openSlotList.getSlots().add(new Slot1(1234, 1400, 1450, "mjones"));
         openSlotList.getSlots().add(new Slot1(5678, 1600, 1650, "mjones"));
         return openSlotList;

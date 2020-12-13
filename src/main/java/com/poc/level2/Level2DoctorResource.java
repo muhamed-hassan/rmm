@@ -33,7 +33,7 @@ public class Level2DoctorResource {
     })
     @GetMapping("{doctorName}/slots")
     public OpenSlotList2 getOpenSlots(@PathVariable String doctorName, @RequestParam @DateTimeFormat(pattern = "yyyyMMdd") Date date, @RequestParam String status) {
-        OpenSlotList2 openSlotList = new OpenSlotList2(new ArrayList<Slot2>());
+        var openSlotList = new OpenSlotList2(new ArrayList<>());
         openSlotList.getSlots().add(new Slot2(1234, 1400, 1450, "mjones"));
         openSlotList.getSlots().add(new Slot2(5678, 1600, 1650, "mjones"));
         return openSlotList;

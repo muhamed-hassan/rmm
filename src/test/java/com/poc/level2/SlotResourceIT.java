@@ -8,17 +8,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.ResultActions;
 
 import com.poc.BaseIT;
 
 public class SlotResourceIT extends BaseIT {
 
     @Test
-    public void testBookAppointment_WhenSlotIsAvailable_ThenReturnTheLocationOfBookedAppointment() throws Exception {
-        String payload = readJsonFrom(SEED_MAPPINGS_DIR + "2_booking_details_request.json");
+    void testBookAppointment_WhenSlotIsAvailable_ThenReturnTheLocationOfBookedAppointment() throws Exception {
+        var payload = readJsonFrom(SEED_MAPPINGS_DIR + "2_booking_details_request.json");
 
-        ResultActions resultActions = mockMvc.perform(post("/level2/slots/1234")
+        var resultActions = mockMvc.perform(post("/level2/slots/1234")
                                                             .contentType(MediaType.APPLICATION_JSON_VALUE)
                                                             .content(payload));
 
@@ -27,10 +26,10 @@ public class SlotResourceIT extends BaseIT {
     }
 
     @Test
-    public void testBookAppointment_WhenSlotIsNotAvailable_ThenReturnWithConflict() throws Exception {
-        String payload = readJsonFrom(SEED_MAPPINGS_DIR + "2_booking_details_request.json");
+    void testBookAppointment_WhenSlotIsNotAvailable_ThenReturnWithConflict() throws Exception {
+        var payload = readJsonFrom(SEED_MAPPINGS_DIR + "2_booking_details_request.json");
 
-        ResultActions resultActions = mockMvc.perform(post("/level2/slots/777")
+        var resultActions = mockMvc.perform(post("/level2/slots/777")
                                                             .contentType(MediaType.APPLICATION_JSON_VALUE)
                                                             .content(payload));
 
@@ -38,10 +37,10 @@ public class SlotResourceIT extends BaseIT {
     }
 
     @Test
-    public void testGetAppointment_WhenTheSlotIsAvailable_ThenReturnBookedAppointment() throws Exception {
-        String expectedResponse = readJsonFrom(EXPECTED_MAPPINGS_DIR + "2_available_booked_appointment.json");
+    void testGetAppointment_WhenTheSlotIsAvailable_ThenReturnBookedAppointment() throws Exception {
+        var expectedResponse = readJsonFrom(EXPECTED_MAPPINGS_DIR + "2_available_booked_appointment.json");
 
-        ResultActions resultActions = mockMvc.perform(get("/level2/slots/1234/appointment")
+        var resultActions = mockMvc.perform(get("/level2/slots/1234/appointment")
                                                             .accept(MediaType.APPLICATION_JSON_VALUE));
 
         resultActions.andExpect(status().isOk())

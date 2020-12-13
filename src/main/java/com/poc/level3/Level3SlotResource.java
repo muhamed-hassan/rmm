@@ -57,7 +57,7 @@ public class Level3SlotResource extends BaseResource {
     })
     @GetMapping(value = "{slotId}/appointment", produces = "application/hal+json")
     public Appointment3 getAppointment(@PathVariable int slotId) {
-        Appointment3 appointment = new Appointment3(new Slot3(slotId, 1400, 1450, "mjones")
+        var appointment = new Appointment3(new Slot3(slotId, 1400, 1450, "mjones")
                                                         .withLink(constructUri(BASE_API_URI, "/" + slotId)),
                                             "jsmith")
                             .withSelfLink(constructUri(BASE_API_URI, "/" + slotId + "/appointment"))

@@ -33,10 +33,10 @@ public class Level1SlotResource {
     @PostMapping("{slotId}/appointment")
     public Appointment1 bookAppointment(@PathVariable int slotId, @RequestBody BookingDetails1 bookingDetails) {
         // Loading slot by id
-        Slot1 slot = new Slot1();
+        var slot = new Slot1();
         slot.setId(slotId);
         slot.setDoctor("mjones");
-        Appointment1 appointment = new Appointment1();
+        var appointment = new Appointment1();
         appointment.setSlot(slot);
         appointment.setPatient(bookingDetails.getPatient());
         if (slotId == 1234) {

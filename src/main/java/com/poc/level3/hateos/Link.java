@@ -1,5 +1,7 @@
 package com.poc.level3.hateos;
 
+import java.util.Objects;
+
 public class Link {
 
     public static final String SELF = "self";
@@ -37,39 +39,21 @@ public class Link {
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((rel == null) ? 0 : rel.hashCode());
-        result = prime * result + ((type == null) ? 0 : type.hashCode());
-        result = prime * result + ((uri == null) ? 0 : uri.hashCode());
-        return result;
+        return Objects.hash(rel, type, uri);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
+    public boolean equals(Object other) {
+        if (this == other) {
             return true;
-        if (obj == null)
+        }
+        if (other == null || getClass() != other.getClass()) {
             return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Link other = (Link) obj;
-        if (rel == null) {
-            if (other.rel != null)
-                return false;
-        } else if (!rel.equals(other.rel))
-            return false;
-        if (type == null) {
-            if (other.type != null)
-                return false;
-        } else if (!type.equals(other.type))
-            return false;
-        if (uri == null) {
-            if (other.uri != null)
-                return false;
-        } else if (!uri.equals(other.uri))
-            return false;
-        return true;
+        }
+        Link that = (Link) other;
+        return Objects.equals(rel, that.rel)
+            && Objects.equals(type, that.type)
+            && Objects.equals(uri, that.uri);
     }
 
 }

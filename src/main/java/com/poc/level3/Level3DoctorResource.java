@@ -34,12 +34,12 @@ public class Level3DoctorResource extends BaseResource {
     })
     @GetMapping("{doctorName}/slots")
     public OpenSlotList3 getOpenSlots(@PathVariable String doctorName, @RequestParam @DateTimeFormat(pattern = "yyyyMMdd") Date date, @RequestParam String status) {
-        OpenSlotList3 openSlotList = new OpenSlotList3(new ArrayList<Slot3>());
+        var openSlotList = new OpenSlotList3(new ArrayList<>());
 
-        Slot3 slot1 = new Slot3(1234, 1400, 1450, "mjones")
+        var slot1 = new Slot3(1234, 1400, 1450, "mjones")
                             .withLink(constructUri(BASE_API_URI, "/1234"));
 
-        Slot3 slot2 = new Slot3(5678, 1600, 1650, "mjones")
+        var slot2 = new Slot3(5678, 1600, 1650, "mjones")
                             .withLink(constructUri(BASE_API_URI, "/5678"));
 
         openSlotList.getSlots().add(slot1);

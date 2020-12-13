@@ -47,12 +47,12 @@ public class SwaggerConfig {
 
         @Override
         public void apply(OperationContext operationContext) {
-            Optional<ApiResponses> apiResponsesOptional = operationContext.findAnnotation(ApiResponses.class);
+            var apiResponsesOptional = operationContext.findAnnotation(ApiResponses.class);
             if (apiResponsesOptional.isPresent()) {
-                ApiResponses apiResponses = apiResponsesOptional.get();
-                ApiResponse[] expectedResponses = apiResponses.value();
-                boolean has200 = false;
-                for (ApiResponse apiResponse : expectedResponses) {
+                var apiResponses = apiResponsesOptional.get();
+                var expectedResponses = apiResponses.value();
+                var has200 = false;
+                for (var apiResponse : expectedResponses) {
                     if (apiResponse.code() == HttpStatus.OK.value()) {
                         has200 = true;
                         break;
