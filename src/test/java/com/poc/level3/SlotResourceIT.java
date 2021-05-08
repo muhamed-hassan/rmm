@@ -11,31 +11,31 @@ import org.springframework.http.MediaType;
 
 import com.poc.BaseIT;
 
-public class SlotResourceIT extends BaseIT {
+class SlotResourceIT extends BaseIT {
 
     @Test
-    void testBookAppointment_WhenSlotIsAvailable_ThenReturnTheLocationOfBookedAppointment() throws Exception {
-        var payload = readJsonFrom(SEED_MAPPINGS_DIR + "3_booking_details_request.json");
+    void shouldReturnStatus201AndLocationOfBookedAppointmentWhenRequestAppointmentAndSlotIsAvailable() throws Exception {
+        var requestBody = readJsonFrom(SEED_MAPPINGS_DIR + "3_booking_details_request.json");
 
         var resultActions = mockMvc.perform(post("/level3/slots/1234")
-                                                            .contentType(MediaType.APPLICATION_JSON_VALUE).content(payload));
+                                                            .contentType(MediaType.APPLICATION_JSON_VALUE).content(requestBody));
 
         resultActions.andExpect(status().isCreated())
                         .andExpect(header().exists("Location"));
     }
 
     @Test
-    void testBookAppointment_WhenSlotIsNotAvailable_ThenReturnWithConflict() throws Exception {
-        var payload = readJsonFrom(SEED_MAPPINGS_DIR + "3_booking_details_request.json");
+    void shouldReturnStatus409WhenRequestAppointmentAndSlotIsNotAvailable() throws Exception {
+        var requestBody = readJsonFrom(SEED_MAPPINGS_DIR + "3_booking_details_request.json");
 
         var resultActions = mockMvc.perform(post("/level3/slots/777")
-                                                            .contentType(MediaType.APPLICATION_JSON_VALUE).content(payload));
+                                                            .contentType(MediaType.APPLICATION_JSON_VALUE).content(requestBody));
 
         resultActions.andExpect(status().isConflict());
     }
 
     @Test
-    void testBookAppointment_WhenTheSlotIsAvailable_ThenReturnBookedAppointment() throws Exception {
+    void shouldReturnStatus200AndBookedAppointmentWhenSlotHaveBookedAppointment() throws Exception {
         var expectedResponse = readJsonFrom(EXPECTED_MAPPINGS_DIR + "3_available_booked_appointment.json");
 
         var resultActions = mockMvc.perform(get("/level3/slots/1234/appointment")

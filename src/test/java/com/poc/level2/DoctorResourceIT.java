@@ -10,21 +10,25 @@ import org.springframework.util.LinkedMultiValueMap;
 
 import com.poc.BaseIT;
 
-public class DoctorResourceIT extends BaseIT {
+class DoctorResourceIT extends BaseIT {
 
     @Test
-    void testGetOpenSlots_WhenInquiryAboutAvailableSlots_ThenReturnAvailableSlots() throws Exception {
-        var params = new LinkedMultiValueMap<String, String>();
-        params.add("date", "20100104");
-        params.add("status", "open");
+    void shouldReturnAvailableSlotsWhenInquiryThem() throws Exception {
         var expectedResponse = readJsonFrom(EXPECTED_MAPPINGS_DIR + "2_available_slots.json");
 
         var resultActions = mockMvc.perform(get("/level2/doctors/mjones/slots")
-                                                            .params(params)
+                                                            .params(prepareRequestParams())
                                                             .accept(MediaType.APPLICATION_JSON_VALUE));
 
         resultActions.andExpect(status().isOk())
                         .andExpect(content().json(expectedResponse, true));
+    }
+
+    private LinkedMultiValueMap<String, String> prepareRequestParams() {
+        var requestParams = new LinkedMultiValueMap<String, String>();
+        requestParams.add("date", "20100104");
+        requestParams.add("status", "open");
+        return requestParams;
     }
 
 }

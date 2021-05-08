@@ -11,10 +11,10 @@ import org.springframework.http.MediaType;
 
 import com.poc.BaseIT;
 
-public class SlotResourceIT extends BaseIT {
+class SlotResourceIT extends BaseIT {
 
     @Test
-    void testBookAppointment_WhenSlotIsAvailable_ThenReturnTheLocationOfBookedAppointment() throws Exception {
+    void shouldReturnStatus201AndLocationOfBookedAppointmentWhenRequestAppointmentAndSlotIsAvailable() throws Exception {
         var payload = readJsonFrom(SEED_MAPPINGS_DIR + "2_booking_details_request.json");
 
         var resultActions = mockMvc.perform(post("/level2/slots/1234")
@@ -26,7 +26,7 @@ public class SlotResourceIT extends BaseIT {
     }
 
     @Test
-    void testBookAppointment_WhenSlotIsNotAvailable_ThenReturnWithConflict() throws Exception {
+    void shouldReturnStatus409WhenRequestAppointmentAndSlotIsNotAvailable() throws Exception {
         var payload = readJsonFrom(SEED_MAPPINGS_DIR + "2_booking_details_request.json");
 
         var resultActions = mockMvc.perform(post("/level2/slots/777")
@@ -37,7 +37,7 @@ public class SlotResourceIT extends BaseIT {
     }
 
     @Test
-    void testGetAppointment_WhenTheSlotIsAvailable_ThenReturnBookedAppointment() throws Exception {
+    void shouldReturnStatus200AndBookedAppointmentWhenSlotHaveBookedAppointment() throws Exception {
         var expectedResponse = readJsonFrom(EXPECTED_MAPPINGS_DIR + "2_available_booked_appointment.json");
 
         var resultActions = mockMvc.perform(get("/level2/slots/1234/appointment")
