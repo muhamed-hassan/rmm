@@ -2,6 +2,7 @@ package com.poc.level3.dtos;
 
 import java.util.Objects;
 
+import com.poc.level2.dtos.Slot2;
 import com.poc.level3.hateos.HateosSupport;
 import com.poc.level3.hateos.Link;
 
@@ -15,14 +16,14 @@ public class Slot3 extends HateosSupport {
 
     private String doctor;
 
-    public Slot3() {}
-
-    public Slot3(int id, int start, int end, String doctor) {
-        this.id = id;
-        this.start = start;
-        this.end = end;
-        this.doctor = doctor;
-    }
+//    public Slot3() {}
+//
+//    public Slot3(int id, int start, int end, String doctor) {
+//        this.id = id;
+//        this.start = start;
+//        this.end = end;
+//        this.doctor = doctor;
+//    }
 
     public int getId() {
         return id;
@@ -57,8 +58,28 @@ public class Slot3 extends HateosSupport {
     }
 
     public Slot3 withLink(String uri) {
-        addLink(new Link(uri, Link.SELF, Link.type.GET.toString()));
+    	getLinks().add(new Link().withUri(uri).withRel(Link.SELF).withType(Link.type.GET.toString()));
         return this;
+    }
+    
+    public Slot3 withId(int id) {
+    	this.id = id;
+    	return this;
+    }
+    
+    public Slot3 withStart(int start) {
+    	this.start = start;
+    	return this;
+    }
+    
+    public Slot3 withEnd(int end) {
+    	this.end = end;
+    	return this;
+    }
+    
+    public Slot3 withDoctor(String doctor) {
+    	this.doctor = doctor;
+    	return this;
     }
 
     @Override

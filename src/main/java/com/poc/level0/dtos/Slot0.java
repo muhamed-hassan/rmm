@@ -10,13 +10,13 @@ public class Slot0 {
 
     private String doctor;
 
-    public Slot0() {}
-
-    public Slot0(int start, int end, String doctor) {
-        this.start = start;
-        this.end = end;
-        this.doctor = doctor;
-    }
+//    public Slot0() {}
+//
+//    public Slot0(int start, int end, String doctor) {
+//        this.start = start;
+//        this.end = end;
+//        this.doctor = doctor;
+//    }
 
     public int getStart() {
         return start;
@@ -40,6 +40,21 @@ public class Slot0 {
 
     public void setDoctor(String doctor) {
         this.doctor = doctor;
+    }
+    
+    public Slot0 withStart(int start) {
+    	this.start = start;
+    	return this;
+    }
+    
+    public Slot0 withEnd(int end) {
+    	this.end = end;
+    	return this;
+    }
+    
+    public Slot0 withDoctor(String doctor) {
+    	this.doctor = doctor;
+    	return this;
     }
 
     @Override

@@ -56,16 +56,18 @@ public class Level3SlotResource extends BaseResource {
         @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "Get appointment")
     })
     @GetMapping(value = "{slotId}/appointment", produces = "application/hal+json")
-    public Appointment3 getAppointment(@PathVariable int slotId) {
-        var appointment = new Appointment3(new Slot3(slotId, 1400, 1450, "mjones")
-                                                        .withLink(constructUri(BASE_API_URI, "/" + slotId)),
-                                            "jsmith")
+    public ResponseEntity<Appointment3> getAppointment(@PathVariable int slotId) {
+    	var slot = new Slot3().withId(slotId).withStart(1400).withEnd(1450).withDoctor("mjones").withLink(constructUri(BASE_API_URI, "/" + slotId));
+    	
+        var appointment = new Appointment3()
+        					.withSlot(slot)
+        					.withPatient("jsmith")
                             .withSelfLink(constructUri(BASE_API_URI, "/" + slotId + "/appointment"))
                             .withCancelLink(constructUri(BASE_API_URI, "/" + slotId + "/appointment"))
                             .withAddTestLink(constructUri(BASE_API_URI, "/" + slotId + "/tests"))
                             .withReScheduleLink(constructUri(BASE_API_URI, "/" + slotId))
                             .withHelpLink(constructUri(BASE_API_URI, "/" + slotId + "/help/appointment"));
-        return appointment;
+        return ResponseEntity.ok(appointment);
     }
 
 }

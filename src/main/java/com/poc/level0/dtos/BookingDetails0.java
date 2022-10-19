@@ -6,12 +6,12 @@ public class BookingDetails0 {
 
     private String patient;
 
-    public BookingDetails0() {}
-
-    public BookingDetails0(Slot0 slot, String patient) {
-        this.slot = slot;
-        this.patient = patient;
-    }
+//    public BookingDetails0() {}
+//
+//    public BookingDetails0(Slot0 slot, String patient) {
+//        this.slot = slot;
+//        this.patient = patient;
+//    }
 
     public Slot0 getSlot() {
         return slot;
@@ -29,4 +29,14 @@ public class BookingDetails0 {
         this.patient = patient;
     }
 
+    public BookingDetails0 withSlot(Slot0 slot) {
+    	this.slot = slot;
+    	return this;
+    }
+    
+    public BookingDetails0 withPatient(String patient) {
+    	this.patient = patient;
+    	return this;
+    }
+    
 }

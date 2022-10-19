@@ -6,9 +6,9 @@ public class OpenSlotList2 {
 
     private List<Slot2> slots;
 
-    public OpenSlotList2(List<Slot2> slots) {
-        this.slots = slots;
-    }
+//    public OpenSlotList2(List<Slot2> slots) {
+//        this.slots = slots;
+//    }
 
     public List<Slot2> getSlots() {
         return slots;

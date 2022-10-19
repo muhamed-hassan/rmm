@@ -33,20 +33,19 @@ public class Level1SlotResource {
     @PostMapping("{slotId}/appointment")
     public Appointment1 bookAppointment(@PathVariable int slotId, @RequestBody BookingDetails1 bookingDetails) {
         // Loading slot by id
-        var slot = new Slot1();
-        slot.setId(slotId);
-        slot.setDoctor("mjones");
-        var appointment = new Appointment1();
-        appointment.setSlot(slot);
-        appointment.setPatient(bookingDetails.getPatient());
+    	
+    	var slot = new Slot1().withId(slotId).withDoctor("mjones");
+    	
+//        var slot = new Slot1();
+//        slot.setId(slotId);
+//        slot.setDoctor("mjones");
+        var appointment = new Appointment1().withSlot(slot).withPatient(bookingDetails.getPatient());
         if (slotId == 1234) {
-            slot.setStart(1400);
-            slot.setEnd(1450);
-            appointment.setStatus("Slot booked successfully");
+            slot.withStart(1400).withEnd(1450);
+            appointment.withStatus("Slot booked successfully");
         } else {
-            slot.setStart(1500);
-            slot.setEnd(1550);
-            appointment.setStatus("Slot not available");
+            slot.withStart(1500).withEnd(1550);
+            appointment.withStatus("Slot not available");
         }
         return appointment;
     }

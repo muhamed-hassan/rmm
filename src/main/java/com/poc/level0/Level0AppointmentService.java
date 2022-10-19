@@ -1,7 +1,7 @@
 package com.poc.level0;
 
 import java.net.HttpURLConnection;
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,9 +34,10 @@ public class Level0AppointmentService {
     })
     @PostMapping("getOpenSlots")
     public OpenSlotList0 getOpenSlots(@RequestBody OpenSlot0 openSlot) {
-        var openSlotList = new OpenSlotList0(new ArrayList<>());
-        openSlotList.getSlots().add(new Slot0(1400, 1450, openSlot.getDoctor()));
-        openSlotList.getSlots().add(new Slot0(1600, 1650, openSlot.getDoctor()));
+    	var slot1 = new Slot0().withStart(1400).withEnd(1450).withDoctor(openSlot.getDoctor());
+    	var slot2 = new Slot0().withStart(1600).withEnd(1650).withDoctor(openSlot.getDoctor());    	
+        var openSlotList = new OpenSlotList0();
+        openSlotList.setSlots(List.of(slot1, slot2));
         return openSlotList;
     }
 

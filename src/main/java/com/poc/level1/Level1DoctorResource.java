@@ -1,7 +1,7 @@
 package com.poc.level1;
 
 import java.net.HttpURLConnection;
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,9 +33,10 @@ public class Level1DoctorResource {
     })
     @PostMapping("{doctorName}")
     public OpenSlotList1 getOpenSlots(@PathVariable String doctorName, @RequestBody OpenSlot1 openSlot) {
-        var openSlotList = new OpenSlotList1(new ArrayList<>());
-        openSlotList.getSlots().add(new Slot1(1234, 1400, 1450, "mjones"));
-        openSlotList.getSlots().add(new Slot1(5678, 1600, 1650, "mjones"));
+    	var slot1 = new Slot1().withId(1234).withStart(1400).withEnd(1450).withDoctor(doctorName);
+    	var slot2 = new Slot1().withId(5678).withStart(1600).withEnd(1650).withDoctor(doctorName);
+        var openSlotList = new OpenSlotList1();
+        openSlotList.setSlots(List.of(slot1, slot2));
         return openSlotList;
     }
 

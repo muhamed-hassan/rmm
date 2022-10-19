@@ -12,14 +12,14 @@ public class Slot2 {
 
     private String doctor;
 
-    public Slot2() {}
-
-    public Slot2(int id, int start, int end, String doctor) {
-        this.id = id;
-        this.start = start;
-        this.end = end;
-        this.doctor = doctor;
-    }
+//    public Slot2() {}
+//
+//    public Slot2(int id, int start, int end, String doctor) {
+//        this.id = id;
+//        this.start = start;
+//        this.end = end;
+//        this.doctor = doctor;
+//    }
 
     public int getId() {
         return id;
@@ -51,6 +51,26 @@ public class Slot2 {
 
     public void setDoctor(String doctor) {
         this.doctor = doctor;
+    }
+    
+    public Slot2 withId(int id) {
+    	this.id = id;
+    	return this;
+    }
+    
+    public Slot2 withStart(int start) {
+    	this.start = start;
+    	return this;
+    }
+    
+    public Slot2 withEnd(int end) {
+    	this.end = end;
+    	return this;
+    }
+    
+    public Slot2 withDoctor(String doctor) {
+    	this.doctor = doctor;
+    	return this;
     }
 
     @Override

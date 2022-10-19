@@ -1,34 +1,44 @@
 package com.poc.level2;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
+
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.util.LinkedMultiValueMap;
 
 import com.poc.BaseIT;
+import com.poc.level2.dtos.OpenSlotList2;
+import com.poc.level2.dtos.Slot2;
 
 class DoctorResourceIT extends BaseIT {
 
     @Test
-    void shouldReturnAvailableSlotsWhenInquiryThem() throws Exception {
-        var expectedResponse = readJsonFrom(EXPECTED_MAPPINGS_DIR + "2_available_slots.json");
+    void shouldReturnAvailableSlotsWhenInquiryThem() 
+    		throws Exception {
+    	var expectedDoctor = "mjones";
+        var expectedSlot1 = new Slot2().withId(1234).withStart(1400).withEnd(1450).withDoctor(expectedDoctor);
+    	var expectedSlot2 = new Slot2().withId(5678).withStart(1600).withEnd(1650).withDoctor(expectedDoctor);
+        var expectedOpenSlotList = new OpenSlotList2();
+        expectedOpenSlotList.setSlots(List.of(expectedSlot1, expectedSlot2));        
+        var headers = new HttpHeaders();
+        headers.setAccept(List.of(MediaType.APPLICATION_JSON));        
+        var httpEntity = new HttpEntity<>(headers);
 
-        var resultActions = mockMvc.perform(get("/level2/doctors/mjones/slots")
-                                                            .params(prepareRequestParams())
-                                                            .accept(MediaType.APPLICATION_JSON_VALUE));
-
-        resultActions.andExpect(status().isOk())
-                        .andExpect(content().json(expectedResponse, true));
-    }
-
-    private LinkedMultiValueMap<String, String> prepareRequestParams() {
-        var requestParams = new LinkedMultiValueMap<String, String>();
-        requestParams.add("date", "20100104");
-        requestParams.add("status", "open");
-        return requestParams;
+        var response = testRestTemplate.exchange(BASE_URI_WITHOUT_PORT + serverPort + "/level2/doctors/{doctorName}/slots?date={date}", 
+        		HttpMethod.GET, httpEntity, OpenSlotList2.class, expectedDoctor, "20100104");
+        
+        assertNotNull(response);        
+        var body = response.getBody();
+        assertNotNull(body);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(expectedOpenSlotList.getSlots(), body.getSlots());
     }
 
 }

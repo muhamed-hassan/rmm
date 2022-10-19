@@ -3,14 +3,17 @@ package com.poc.level3;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.poc.level2.dtos.Slot2;
 import com.poc.level3.dtos.OpenSlotList3;
 import com.poc.level3.dtos.Slot3;
 
@@ -33,19 +36,12 @@ public class Level3DoctorResource extends BaseResource {
         @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "Get open slots")
     })
     @GetMapping("{doctorName}/slots")
-    public OpenSlotList3 getOpenSlots(@PathVariable String doctorName, @RequestParam @DateTimeFormat(pattern = "yyyyMMdd") Date date, @RequestParam String status) {
-        var openSlotList = new OpenSlotList3(new ArrayList<>());
-
-        var slot1 = new Slot3(1234, 1400, 1450, "mjones")
-                            .withLink(constructUri(BASE_API_URI, "/1234"));
-
-        var slot2 = new Slot3(5678, 1600, 1650, "mjones")
-                            .withLink(constructUri(BASE_API_URI, "/5678"));
-
-        openSlotList.getSlots().add(slot1);
-        openSlotList.getSlots().add(slot2);
-
-        return openSlotList;
+    public ResponseEntity<OpenSlotList3> getOpenSlots(@PathVariable String doctorName, @RequestParam @DateTimeFormat(pattern = "yyyyMMdd") Date date) {
+    	var slot1 = new Slot3().withId(1234).withStart(1400).withEnd(1450).withDoctor(doctorName).withLink(constructUri(BASE_API_URI, "/1234"));
+    	var slot2 = new Slot3().withId(5678).withStart(1600).withEnd(1650).withDoctor(doctorName).withLink(constructUri(BASE_API_URI, "/5678"));    	
+    	var openSlotList = new OpenSlotList3();
+    	openSlotList.setSlots(List.of(slot1, slot2));
+        return ResponseEntity.ok(openSlotList);
     }
 
 }

@@ -4,11 +4,11 @@ public class BookingDetails3 {
 
     private String patient;
 
-    public BookingDetails3() {}
-
-    public BookingDetails3(String patient) {
-        setPatient(patient);
-    }
+//    public BookingDetails3() {}
+//
+//    public BookingDetails3(String patient) {
+//        setPatient(patient);
+//    }
 
     public String getPatient() {
         return patient;

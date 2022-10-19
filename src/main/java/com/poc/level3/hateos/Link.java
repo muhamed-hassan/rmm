@@ -13,17 +13,17 @@ public class Link {
         PUT
     };
 
-    private final String uri;
+    private String uri;
 
-    private final String rel;
+    private String rel;
 
-    private final String type;
+    private String type;
 
-    public Link(String uri, String rel, String type) {
-        this.uri = uri;
-        this.rel = rel;
-        this.type = type;
-    }
+//    public Link(String uri, String rel, String type) {
+//        this.uri = uri;
+//        this.rel = rel;
+//        this.type = type;
+//    }
 
     public String getUri() {
         return uri;
@@ -35,6 +35,21 @@ public class Link {
 
     public String getType() {
         return type;
+    }
+    
+    public Link withUri(String uri) {
+    	this.uri = uri;
+        return this;
+    }
+
+    public Link withRel(String rel) {
+    	this.rel = rel;
+    	return this;
+    }
+
+    public Link withType(String type) {
+    	this.type = type;
+    	return this;
     }
 
     @Override

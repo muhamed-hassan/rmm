@@ -4,11 +4,11 @@ public class OpenSlot1 {
 
     private String date;
 
-    public OpenSlot1() {}
-
-    public OpenSlot1(String date) {
-        this.date = date;
-    }
+//    public OpenSlot1() {}
+//
+//    public OpenSlot1(String date) {
+//        this.date = date;
+//    }
 
     public String getDate() {
         return date;

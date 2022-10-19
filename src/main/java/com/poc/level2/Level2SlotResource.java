@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.poc.level1.dtos.Appointment1;
+import com.poc.level1.dtos.Slot1;
 import com.poc.level2.dtos.Appointment2;
 import com.poc.level2.dtos.BookingDetails2;
 import com.poc.level2.dtos.Slot2;
@@ -56,8 +58,10 @@ public class Level2SlotResource {
         @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "Get appointment")
     })
     @GetMapping("{slotId}/appointment")
-    public Appointment2 getAppointment(@PathVariable int slotId) {
-        return new Appointment2(new Slot2(slotId, 1400, 1450, "mjones"), "jsmith");
+    public ResponseEntity<Appointment2> getAppointment(@PathVariable int slotId) {
+    	var slot = new Slot2().withId(slotId).withStart(1400).withEnd(1450).withDoctor("mjones");
+    	var appointment = new Appointment2().withSlot(slot).withPatient("jsmith");    	
+        return ResponseEntity.ok(appointment);
     }
 
 }

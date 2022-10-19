@@ -12,14 +12,14 @@ public class Slot1 {
 
     private String doctor;
 
-    public Slot1() {}
-
-    public Slot1(int id, int start, int end, String doctor) {
-        this.id = id;
-        this.start = start;
-        this.end = end;
-        this.doctor = doctor;
-    }
+//    public Slot1() {}
+//
+//    public Slot1(int id, int start, int end, String doctor) {
+//        this.id = id;
+//        this.start = start;
+//        this.end = end;
+//        this.doctor = doctor;
+//    }
 
     public int getId() {
         return id;
@@ -52,22 +52,44 @@ public class Slot1 {
     public void setDoctor(String doctor) {
         this.doctor = doctor;
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
+    
+    public Slot1 withId(int id) {
+    	this.id = id;
+    	return this;
+    }
+    
+    public Slot1 withStart(int start) {
+    	this.start = start;
+    	return this;
+    }
+    
+    public Slot1 withEnd(int end) {
+    	this.end = end;
+    	return this;
+    }
+    
+    public Slot1 withDoctor(String doctor) {
+    	this.doctor = doctor;
+    	return this;
     }
 
-    @Override
-    public boolean equals(Object other) {
-        if (this == other) {
-            return true;
-        }
-        if (other == null || getClass() != other.getClass()) {
-            return false;
-        }
-        Slot1 that = (Slot1) other;
-        return Objects.equals(id, that.id);
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object that) {
+		if (this == that)
+			return true;
+		if (that == null)
+			return false;
+		if (getClass() != that.getClass())
+			return false;
+		Slot1 other = (Slot1) that;
+		return id == other.id;
+	}
+
+    
 
 }
