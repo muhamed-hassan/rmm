@@ -1,7 +1,6 @@
 package com.poc.level3;
 
 import java.net.HttpURLConnection;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.poc.level2.dtos.Slot2;
 import com.poc.level3.dtos.OpenSlotList3;
 import com.poc.level3.dtos.Slot3;
 

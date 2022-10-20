@@ -2,8 +2,6 @@ package com.poc.level3.dtos;
 
 import java.util.Objects;
 
-import com.poc.level2.dtos.Appointment2;
-import com.poc.level2.dtos.Slot2;
 import com.poc.level3.hateos.HateosSupport;
 import com.poc.level3.hateos.Link;
 
@@ -20,11 +18,6 @@ public class Appointment3 extends HateosSupport {
     public void setPatient(String patient) {
         this.patient = patient;
     }
-
-//    public Appointment3(Slot3 slot, String patient) {
-//        setSlot(slot);
-//        setPatient(patient);
-//    }
 
     public Slot3 getSlot() {
         return slot;
@@ -85,8 +78,9 @@ public class Appointment3 extends HateosSupport {
 			return false;
 		if (getClass() != that.getClass())
 			return false;
-		Appointment3 other = (Appointment3) that;
-		return Objects.equals(patient, other.patient) && Objects.equals(slot, other.slot);
+		var other = (Appointment3) that;
+		return Objects.equals(patient, other.patient) 
+				&& Objects.equals(slot, other.slot);
 	}    
     
 }

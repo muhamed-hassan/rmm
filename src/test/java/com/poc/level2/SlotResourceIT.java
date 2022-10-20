@@ -28,7 +28,7 @@ class SlotResourceIT extends BaseIT {
         headers.setContentType(MediaType.APPLICATION_JSON);        
         var httpEntity = new HttpEntity<>(requestBody, headers);
         
-        var response = testRestTemplate.exchange(BASE_URI_WITHOUT_PORT + serverPort + "/level2/slots/{slotId}", 
+        var response = testRestTemplate.exchange(urlFrom("/level2/slots/{slotId}"), 
         		HttpMethod.POST, httpEntity, Void.class, expectedId);
               
         assertNotNull(response);        
@@ -45,7 +45,7 @@ class SlotResourceIT extends BaseIT {
         headers.setContentType(MediaType.APPLICATION_JSON);        
         var httpEntity = new HttpEntity<>(requestBody, headers);
         
-        var response = testRestTemplate.exchange(BASE_URI_WITHOUT_PORT + serverPort + "/level2/slots/{slotId}", 
+        var response = testRestTemplate.exchange(urlFrom("/level2/slots/{slotId}"), 
         		HttpMethod.POST, httpEntity, Void.class, expectedId);
         
         assertNotNull(response);        
@@ -62,7 +62,7 @@ class SlotResourceIT extends BaseIT {
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));        
         var httpEntity = new HttpEntity<>(headers);
 
-        var response = testRestTemplate.exchange(BASE_URI_WITHOUT_PORT + serverPort + "/level2/slots/{slotId}/appointment", 
+        var response = testRestTemplate.exchange(urlFrom("/level2/slots/{slotId}/appointment"), 
         		HttpMethod.GET, httpEntity, Appointment2.class, slotId);     
                 
         assertNotNull(response);  

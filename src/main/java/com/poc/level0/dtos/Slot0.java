@@ -10,14 +10,6 @@ public class Slot0 {
 
     private String doctor;
 
-//    public Slot0() {}
-//
-//    public Slot0(int start, int end, String doctor) {
-//        this.start = start;
-//        this.end = end;
-//        this.doctor = doctor;
-//    }
-
     public int getStart() {
         return start;
     }
@@ -70,7 +62,7 @@ public class Slot0 {
         if (other == null || getClass() != other.getClass()) {
             return false;
         }
-        Slot0 that = (Slot0) other;
+        var that = (Slot0) other;
         return Objects.equals(doctor, that.doctor)
             && Objects.equals(end, that.end)
             && Objects.equals(start, that.start);

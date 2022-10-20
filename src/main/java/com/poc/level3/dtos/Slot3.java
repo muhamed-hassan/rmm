@@ -2,7 +2,6 @@ package com.poc.level3.dtos;
 
 import java.util.Objects;
 
-import com.poc.level2.dtos.Slot2;
 import com.poc.level3.hateos.HateosSupport;
 import com.poc.level3.hateos.Link;
 
@@ -15,15 +14,6 @@ public class Slot3 extends HateosSupport {
     private int end;
 
     private String doctor;
-
-//    public Slot3() {}
-//
-//    public Slot3(int id, int start, int end, String doctor) {
-//        this.id = id;
-//        this.start = start;
-//        this.end = end;
-//        this.doctor = doctor;
-//    }
 
     public int getId() {
         return id;
@@ -56,12 +46,7 @@ public class Slot3 extends HateosSupport {
     public void setDoctor(String doctor) {
         this.doctor = doctor;
     }
-
-    public Slot3 withLink(String uri) {
-    	getLinks().add(new Link().withUri(uri).withRel(Link.SELF).withType(Link.type.GET.toString()));
-        return this;
-    }
-    
+      
     public Slot3 withId(int id) {
     	this.id = id;
     	return this;
@@ -81,6 +66,11 @@ public class Slot3 extends HateosSupport {
     	this.doctor = doctor;
     	return this;
     }
+    
+    public Slot3 withLink(String uri) {
+    	getLinks().add(new Link().withUri(uri).withRel(Link.SELF).withType(Link.type.GET.toString()));
+        return this;
+    }
 
     @Override
     public int hashCode() {
@@ -95,7 +85,7 @@ public class Slot3 extends HateosSupport {
         if (other == null || getClass() != other.getClass()) {
             return false;
         }
-        Slot3 that = (Slot3) other;
+        var that = (Slot3) other;
         return Objects.equals(id, that.id);
     }
 

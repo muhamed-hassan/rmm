@@ -6,13 +6,6 @@ public class BookingDetails0 {
 
     private String patient;
 
-//    public BookingDetails0() {}
-//
-//    public BookingDetails0(Slot0 slot, String patient) {
-//        this.slot = slot;
-//        this.patient = patient;
-//    }
-
     public Slot0 getSlot() {
         return slot;
     }

@@ -12,15 +12,6 @@ public class Slot1 {
 
     private String doctor;
 
-//    public Slot1() {}
-//
-//    public Slot1(int id, int start, int end, String doctor) {
-//        this.id = id;
-//        this.start = start;
-//        this.end = end;
-//        this.doctor = doctor;
-//    }
-
     public int getId() {
         return id;
     }
@@ -86,10 +77,8 @@ public class Slot1 {
 			return false;
 		if (getClass() != that.getClass())
 			return false;
-		Slot1 other = (Slot1) that;
+		var other = (Slot1) that;
 		return id == other.id;
-	}
-
-    
+	}	
 
 }

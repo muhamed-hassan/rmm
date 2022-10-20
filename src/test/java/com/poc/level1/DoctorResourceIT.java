@@ -31,7 +31,7 @@ class DoctorResourceIT extends BaseIT {
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));        
         var httpEntity = new HttpEntity<>(requestBody, headers);
 
-        var response = testRestTemplate.postForObject(BASE_URI_WITHOUT_PORT + serverPort + "/level1/doctors/{doctorName}", 
+        var response = testRestTemplate.postForObject(urlFrom("/level1/doctors/{doctorName}"), 
         		httpEntity, OpenSlotList1.class, expectedDoctor);
                 
         assertNotNull(response);

@@ -2,9 +2,6 @@ package com.poc.level1.dtos;
 
 import java.util.Objects;
 
-import com.poc.level0.dtos.Appointment0;
-import com.poc.level0.dtos.Slot0;
-
 public class Appointment1 {
 
     private Slot1 slot;
@@ -13,19 +10,11 @@ public class Appointment1 {
 
     private String status;
 
-//    public Appointment1() {}
-//
-//    public Appointment1(Slot1 slot, String patient, String status) {
-//        this.slot = slot;
-//        this.patient = patient;
-//        this.status = status;
-//    }
-
     public Slot1 getSlot() {
         return slot;
     }
 
-    public void setSlot(/*final */Slot1 slot) {
+    public void setSlot(Slot1 slot) {
         this.slot = slot;
     }
 
@@ -33,7 +22,7 @@ public class Appointment1 {
         return patient;
     }
 
-    public void setPatient(/*final */String patient) {
+    public void setPatient(String patient) {
         this.patient = patient;
     }
 
@@ -41,7 +30,7 @@ public class Appointment1 {
         return status;
     }
 
-    public void setStatus(/*final */String status) {
+    public void setStatus(String status) {
         this.status = status;
     }
     
@@ -73,8 +62,9 @@ public class Appointment1 {
 			return false;
 		if (getClass() != that.getClass())
 			return false;
-		Appointment1 other = (Appointment1) that;
-		return Objects.equals(patient, other.patient) && Objects.equals(slot, other.slot)
+		var other = (Appointment1) that;
+		return Objects.equals(patient, other.patient) 
+				&& Objects.equals(slot, other.slot)
 				&& Objects.equals(status, other.status);
 	}
 

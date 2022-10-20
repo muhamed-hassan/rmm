@@ -6,13 +6,6 @@ public class OpenSlot0 {
 
     private String doctor;
 
-//    public OpenSlot0() {}
-//
-//    public OpenSlot0(String date, String doctor) {
-//        this.date = date;
-//        this.doctor = doctor;
-//    }
-
     public String getDate() {
         return date;
     }

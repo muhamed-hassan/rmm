@@ -22,8 +22,6 @@ public class BaseIT {
 
     protected static final String SEED_MAPPINGS_DIR = "seed/";
 
-    protected static final String EXPECTED_MAPPINGS_DIR = "expected/";
-
     @Value("${server.port}")
 	protected int serverPort;
 	
@@ -36,6 +34,10 @@ public class BaseIT {
                                     Charset.forName(StandardCharsets.UTF_8.name()))
                         .stream()
                         .collect(Collectors.joining());
+    }
+    
+    protected String urlFrom(String requestUri) {
+    	return BASE_URI_WITHOUT_PORT + serverPort + requestUri;
     }
 
 }

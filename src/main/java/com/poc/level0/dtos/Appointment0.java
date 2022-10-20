@@ -10,19 +10,11 @@ public class Appointment0 {
 
     private String status;
 
-//    public Appointment0() {}
-//
-//    public Appointment0(final Slot0 slot, final String patient, final String status) {
-//        this.slot = slot;
-//        this.patient = patient;
-//        this.status = status;
-//    }
-
     public Slot0 getSlot() {
         return slot;
     }
 
-    public void setSlot(/*final*/ Slot0 slot) {
+    public void setSlot(Slot0 slot) {
         this.slot = slot;
     }
 
@@ -30,7 +22,7 @@ public class Appointment0 {
         return patient;
     }
 
-    public void setPatient(/*final*/ String patient) {
+    public void setPatient(String patient) {
         this.patient = patient;
     }
 
@@ -38,7 +30,7 @@ public class Appointment0 {
         return status;
     }
 
-    public void setStatus(/*final*/ String status) {
+    public void setStatus(String status) {
         this.status = status;
     }
     
@@ -70,11 +62,10 @@ public class Appointment0 {
 			return false;
 		if (getClass() != that.getClass())
 			return false;
-		Appointment0 other = (Appointment0) that;
-		return Objects.equals(patient, other.patient) && Objects.equals(slot, other.slot)
+		var other = (Appointment0) that;
+		return Objects.equals(patient, other.patient) 
+				&& Objects.equals(slot, other.slot)
 				&& Objects.equals(status, other.status);
 	}
-    
-    
 
 }

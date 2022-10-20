@@ -6,10 +6,6 @@ public class OpenSlotList1 {
 
     private List<Slot1> slots;
 
-//    public OpenSlotList1(List<Slot1> slots) {
-//        this.slots = slots;
-//    }
-
     public List<Slot1> getSlots() {
         return slots;
     }

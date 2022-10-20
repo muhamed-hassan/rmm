@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.poc.level1.dtos.Appointment1;
-import com.poc.level1.dtos.Slot1;
 import com.poc.level2.dtos.Appointment2;
 import com.poc.level2.dtos.BookingDetails2;
 import com.poc.level2.dtos.Slot2;

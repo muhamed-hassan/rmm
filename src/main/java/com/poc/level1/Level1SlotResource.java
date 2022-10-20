@@ -31,14 +31,8 @@ public class Level1SlotResource {
         @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "Book appointment OR Failed to book appointment, depending on status")
     })
     @PostMapping("{slotId}/appointment")
-    public Appointment1 bookAppointment(@PathVariable int slotId, @RequestBody BookingDetails1 bookingDetails) {
-        // Loading slot by id
-    	
+    public Appointment1 bookAppointment(@PathVariable int slotId, @RequestBody BookingDetails1 bookingDetails) {    	
     	var slot = new Slot1().withId(slotId).withDoctor("mjones");
-    	
-//        var slot = new Slot1();
-//        slot.setId(slotId);
-//        slot.setDoctor("mjones");
         var appointment = new Appointment1().withSlot(slot).withPatient(bookingDetails.getPatient());
         if (slotId == 1234) {
             slot.withStart(1400).withEnd(1450);

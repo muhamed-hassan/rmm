@@ -32,7 +32,7 @@ class AppointmentServiceIT extends BaseIT {
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));        
         var httpEntity = new HttpEntity<>(requestBody, headers);
 
-        var response = testRestTemplate.postForObject(BASE_URI_WITHOUT_PORT + serverPort + "/level0/appointmentService/getOpenSlots", 
+        var response = testRestTemplate.postForObject(urlFrom("/level0/appointmentService/getOpenSlots"), 
         		httpEntity, OpenSlotList0.class);
         
         assertNotNull(response);
@@ -53,11 +53,11 @@ class AppointmentServiceIT extends BaseIT {
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));        
         var httpEntity = new HttpEntity<>(requestBody, headers);
 
-        var appointment = testRestTemplate.postForObject(BASE_URI_WITHOUT_PORT + serverPort + "/level0/appointmentService/bookAppointment", 
+        var response = testRestTemplate.postForObject(urlFrom("/level0/appointmentService/bookAppointment"), 
         		httpEntity, Appointment0.class);
         
-        assertNotNull(appointment);
-        assertEquals(expectedAppointment, appointment);
+        assertNotNull(response);
+        assertEquals(expectedAppointment, response);
     }
 
     @Test
@@ -74,11 +74,11 @@ class AppointmentServiceIT extends BaseIT {
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));        
         var httpEntity = new HttpEntity<>(requestBody, headers);
 
-        var appointment = testRestTemplate.postForObject(BASE_URI_WITHOUT_PORT + serverPort + "/level0/appointmentService/bookAppointment", 
+        var response = testRestTemplate.postForObject(urlFrom("/level0/appointmentService/bookAppointment"), 
         		httpEntity, Appointment0.class);
         
-        assertNotNull(appointment);
-        assertEquals(expectedAppointment, appointment);
+        assertNotNull(response);
+        assertEquals(expectedAppointment, response);
     }
 
 }

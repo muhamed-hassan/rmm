@@ -31,7 +31,7 @@ class DoctorResourceIT extends BaseIT {
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));        
         var httpEntity = new HttpEntity<>(headers);
 
-        var response = testRestTemplate.exchange(BASE_URI_WITHOUT_PORT + serverPort + "/level2/doctors/{doctorName}/slots?date={date}", 
+        var response = testRestTemplate.exchange(urlFrom("/level2/doctors/{doctorName}/slots?date={date}"), 
         		HttpMethod.GET, httpEntity, OpenSlotList2.class, expectedDoctor, "20100104");
         
         assertNotNull(response);        

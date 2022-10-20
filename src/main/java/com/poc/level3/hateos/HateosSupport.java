@@ -25,7 +25,7 @@ public class HateosSupport {
 			return false;
 		if (getClass() != that.getClass())
 			return false;
-		HateosSupport other = (HateosSupport) that;
+		var other = (HateosSupport) that;
 		return Objects.equals(links, other.links);
 	}
 

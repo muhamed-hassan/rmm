@@ -19,12 +19,6 @@ public class Link {
 
     private String type;
 
-//    public Link(String uri, String rel, String type) {
-//        this.uri = uri;
-//        this.rel = rel;
-//        this.type = type;
-//    }
-
     public String getUri() {
         return uri;
     }
@@ -65,7 +59,7 @@ public class Link {
         if (other == null || getClass() != other.getClass()) {
             return false;
         }
-        Link that = (Link) other;
+        var that = (Link) other;
         return Objects.equals(rel, that.rel)
             && Objects.equals(type, that.type)
             && Objects.equals(uri, that.uri);

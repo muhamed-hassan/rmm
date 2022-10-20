@@ -12,15 +12,6 @@ public class Slot2 {
 
     private String doctor;
 
-//    public Slot2() {}
-//
-//    public Slot2(int id, int start, int end, String doctor) {
-//        this.id = id;
-//        this.start = start;
-//        this.end = end;
-//        this.doctor = doctor;
-//    }
-
     public int getId() {
         return id;
     }
@@ -73,21 +64,21 @@ public class Slot2 {
     	return this;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
 
-    @Override
-    public boolean equals(Object other) {
-        if (this == other) {
-            return true;
-        }
-        if (other == null || getClass() != other.getClass()) {
-            return false;
-        }
-        Slot2 that = (Slot2) other;
-        return Objects.equals(id, that.id);
-    }
+	@Override
+	public boolean equals(Object that) {
+		if (this == that)
+			return true;
+		if (that == null)
+			return false;
+		if (getClass() != that.getClass())
+			return false;
+		var other = (Slot2) that;
+		return id == other.id;
+	}
 
 }
