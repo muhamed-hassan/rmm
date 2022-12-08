@@ -1,6 +1,5 @@
 package com.poc.level1;
 
-import java.net.HttpURLConnection;
 import java.util.List;
 
 import org.springframework.http.MediaType;
@@ -14,12 +13,6 @@ import com.poc.level1.dtos.OpenSlot1;
 import com.poc.level1.dtos.OpenSlotList1;
 import com.poc.level1.dtos.Slot1;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-
-@Api
 @RestController
 @RequestMapping(
     value = "level1/doctors",
@@ -27,10 +20,6 @@ import io.swagger.annotations.ApiResponses;
     produces = MediaType.APPLICATION_JSON_VALUE)
 public class Level1DoctorResource {
 
-    @ApiOperation("Get open slots")
-    @ApiResponses(value = {
-        @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "Get open slots")
-    })
     @PostMapping("{doctorName}")
     public OpenSlotList1 getOpenSlots(@PathVariable String doctorName, @RequestBody OpenSlot1 openSlot) {
     	var slot1 = new Slot1().withId(1234).withStart(1400).withEnd(1450).withDoctor(doctorName);

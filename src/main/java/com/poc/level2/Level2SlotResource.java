@@ -1,7 +1,5 @@
 package com.poc.level2;
 
-import java.net.HttpURLConnection;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,23 +15,12 @@ import com.poc.level2.dtos.Appointment2;
 import com.poc.level2.dtos.BookingDetails2;
 import com.poc.level2.dtos.Slot2;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-
-@Api
 @RestController
 @RequestMapping(
     value = "level2/slots",
     produces = MediaType.APPLICATION_JSON_VALUE)
 public class Level2SlotResource {
 
-    @ApiOperation("Book appointment")
-    @ApiResponses(value = {
-        @ApiResponse(code = HttpURLConnection.HTTP_CREATED, message = "Book appointment"),
-        @ApiResponse(code = HttpURLConnection.HTTP_CONFLICT, message = "Failed to book appointment")
-    })
     @PostMapping(value = "{slotId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> bookAppointment(@PathVariable int slotId, @RequestBody BookingDetails2 bookingDetails) {
         ResponseEntity.BodyBuilder bodyBuilder = null;
@@ -51,10 +38,6 @@ public class Level2SlotResource {
         return bodyBuilder.build();
     }
 
-    @ApiOperation("Get appointment")
-    @ApiResponses(value = {
-        @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "Get appointment")
-    })
     @GetMapping("{slotId}/appointment")
     public ResponseEntity<Appointment2> getAppointment(@PathVariable int slotId) {
     	var slot = new Slot2().withId(slotId).withStart(1400).withEnd(1450).withDoctor("mjones");

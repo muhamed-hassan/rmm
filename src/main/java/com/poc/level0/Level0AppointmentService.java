@@ -1,6 +1,5 @@
 package com.poc.level0;
 
-import java.net.HttpURLConnection;
 import java.util.List;
 
 import org.springframework.http.MediaType;
@@ -15,12 +14,6 @@ import com.poc.level0.dtos.OpenSlot0;
 import com.poc.level0.dtos.OpenSlotList0;
 import com.poc.level0.dtos.Slot0;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-
-@Api
 @RestController
 @RequestMapping(
     value = "level0/appointmentService",
@@ -28,10 +21,6 @@ import io.swagger.annotations.ApiResponses;
     produces = MediaType.APPLICATION_JSON_VALUE)
 public class Level0AppointmentService {
 
-    @ApiOperation("Get open slots")
-    @ApiResponses(value = {
-        @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "Get open slots")
-    })
     @PostMapping("getOpenSlots")
     public OpenSlotList0 getOpenSlots(@RequestBody OpenSlot0 openSlot) {
     	var slot1 = new Slot0().withStart(1400).withEnd(1450).withDoctor(openSlot.getDoctor());
@@ -41,10 +30,6 @@ public class Level0AppointmentService {
         return openSlotList;
     }
 
-    @ApiOperation("Book appointment")
-    @ApiResponses(value = {
-        @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "Book appointment OR Failed to book appointment, depending on status")
-    })
     @PostMapping("bookAppointment")
     public Appointment0 bookAppointment(@RequestBody BookingDetails0 bookingDetails) {
         var appointment = new Appointment0();

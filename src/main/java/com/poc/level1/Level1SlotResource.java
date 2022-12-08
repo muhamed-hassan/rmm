@@ -1,7 +1,5 @@
 package com.poc.level1;
 
-import java.net.HttpURLConnection;
-
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,12 +11,6 @@ import com.poc.level1.dtos.Appointment1;
 import com.poc.level1.dtos.BookingDetails1;
 import com.poc.level1.dtos.Slot1;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-
-@Api
 @RestController
 @RequestMapping(
     value = "level1/slots",
@@ -26,10 +18,6 @@ import io.swagger.annotations.ApiResponses;
     produces = MediaType.APPLICATION_JSON_VALUE)
 public class Level1SlotResource {
 
-    @ApiOperation("Book appointment")
-    @ApiResponses(value = {
-        @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "Book appointment OR Failed to book appointment, depending on status")
-    })
     @PostMapping("{slotId}/appointment")
     public Appointment1 bookAppointment(@PathVariable int slotId, @RequestBody BookingDetails1 bookingDetails) {    	
     	var slot = new Slot1().withId(slotId).withDoctor("mjones");
