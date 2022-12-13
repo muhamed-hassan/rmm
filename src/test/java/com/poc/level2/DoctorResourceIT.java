@@ -23,8 +23,16 @@ class DoctorResourceIT extends BaseIT {
     void shouldReturnAvailableSlotsWhenInquiryThem() 
     		throws Exception {
     	var expectedDoctor = "mjones";
-        var expectedSlot1 = new Slot2().withId(1234).withStart(1400).withEnd(1450).withDoctor(expectedDoctor);
-    	var expectedSlot2 = new Slot2().withId(5678).withStart(1600).withEnd(1650).withDoctor(expectedDoctor);
+        var expectedSlot1 = new Slot2();
+        expectedSlot1.setId(1234);
+        expectedSlot1.setStart(1400);
+        expectedSlot1.setEnd(1450);
+        expectedSlot1.setDoctor(expectedDoctor);
+    	var expectedSlot2 = new Slot2();
+        expectedSlot2.setId(5678);
+        expectedSlot2.setStart(1600);
+        expectedSlot2.setEnd(1650);
+        expectedSlot2.setDoctor(expectedDoctor);
         var expectedOpenSlotList = new OpenSlotList2();
         expectedOpenSlotList.setSlots(List.of(expectedSlot1, expectedSlot2));        
         var headers = new HttpHeaders();

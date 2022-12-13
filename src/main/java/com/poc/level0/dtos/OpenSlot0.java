@@ -21,15 +21,5 @@ public class OpenSlot0 {
     public void setDoctor(String doctor) {
         this.doctor = doctor;
     }
-    
-    public OpenSlot0 withDate(String date) {
-    	this.date = date;
-    	return this;
-    }
-    
-    public OpenSlot0 withDoctor(String doctor) {
-    	this.doctor = doctor;
-    	return this;
-    }
 
 }

@@ -23,8 +23,14 @@ public class Level0AppointmentService {
 
     @PostMapping("getOpenSlots")
     public OpenSlotList0 getOpenSlots(@RequestBody OpenSlot0 openSlot) {
-    	var slot1 = new Slot0().withStart(1400).withEnd(1450).withDoctor(openSlot.getDoctor());
-    	var slot2 = new Slot0().withStart(1600).withEnd(1650).withDoctor(openSlot.getDoctor());    	
+    	var slot1 = new Slot0();
+        slot1.setStart(1400);
+        slot1.setEnd(1450);
+        slot1.setDoctor(openSlot.getDoctor());
+        var slot2 = new Slot0();
+        slot2.setStart(1600);
+        slot2.setEnd(1650);
+        slot2.setDoctor(openSlot.getDoctor());   	
         var openSlotList = new OpenSlotList0();
         openSlotList.setSlots(List.of(slot1, slot2));
         return openSlotList;

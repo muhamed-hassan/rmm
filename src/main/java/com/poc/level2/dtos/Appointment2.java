@@ -23,16 +23,6 @@ public class Appointment2 {
     public void setPatient(String patient) {
         this.patient = patient;
     }
-    
-    public Appointment2 withSlot(Slot2 slot) {
-    	this.slot = slot;
-    	return this;
-    }
-    
-    public Appointment2 withPatient(String patient) {
-    	this.patient = patient;
-    	return this;
-    }
 
 	@Override
 	public int hashCode() {

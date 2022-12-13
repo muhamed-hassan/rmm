@@ -55,16 +55,19 @@ class SlotResourceIT extends BaseIT {
     		throws Exception {        
         var slotId = 1234;        
         var expectedDoctor = "mjones";
-        var expectedSlot = new Slot3().withId(slotId).withStart(1400).withEnd(1450).withDoctor(expectedDoctor)
-        		.withLink(urlFrom("/level3/doctors/" + slotId));    	
+        var expectedSlot = new Slot3().withLink(urlFrom("/level3/doctors/" + slotId));  
+        expectedSlot.setId(slotId);  
+        expectedSlot.setStart(1400);
+        expectedSlot.setEnd(1450);
+        expectedSlot.setDoctor(expectedDoctor);
     	var expectedAppointment = new Appointment3()
-				.withSlot(expectedSlot)
-				.withPatient("jsmith")
                 .withSelfLink(urlFrom("/level3/slots/" + slotId + "/appointment"))
                 .withCancelLink(urlFrom("/level3/slots/" + slotId + "/appointment"))
                 .withAddTestLink(urlFrom("/level3/slots/" + slotId + "/tests"))
                 .withReScheduleLink(urlFrom("/level3/slots/" + slotId))
-                .withHelpLink(urlFrom("/level3/slots/" + slotId + "/help/appointment"));        
+                .withHelpLink(urlFrom("/level3/slots/" + slotId + "/help/appointment"));     
+        expectedAppointment.setSlot(expectedSlot);
+        expectedAppointment.setPatient("jsmith");           
         var headers = new HttpHeaders();
         headers.add(HttpHeaders.ACCEPT, "application/hal+json");          
         var httpEntity = new HttpEntity<>(headers);

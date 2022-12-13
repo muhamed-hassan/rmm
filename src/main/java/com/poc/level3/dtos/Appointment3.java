@@ -26,16 +26,6 @@ public class Appointment3 extends HateosSupport {
     public void setSlot(Slot3 slot) {
         this.slot = slot;
     }
-    
-    public Appointment3 withSlot(Slot3 slot) {
-    	this.slot = slot;
-    	return this;
-    }
-    
-    public Appointment3 withPatient(String patient) {
-    	this.patient = patient;
-    	return this;
-    }
 
     public Appointment3 withSelfLink(String uri) {
         getLinks().add(new Link().withUri(uri).withRel(Link.SELF).withType(Link.type.GET.toString()));

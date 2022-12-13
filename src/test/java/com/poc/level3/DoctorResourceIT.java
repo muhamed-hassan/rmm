@@ -23,11 +23,17 @@ class DoctorResourceIT extends BaseIT {
     		throws Exception {        
         var expectedDoctor = "mjones";
         var expectedSlotId1 = 1234;
-        var expectedSlot1 = new Slot3().withId(expectedSlotId1).withStart(1400).withEnd(1450).withDoctor(expectedDoctor)
-        		.withLink(urlFrom("/level3/doctors/" + expectedSlotId1));
+        var expectedSlot1 = new Slot3().withLink(urlFrom("/level3/doctors/" + expectedSlotId1));
+        expectedSlot1.setId(expectedSlotId1);
+        expectedSlot1.setStart(1400);
+        expectedSlot1.setEnd(1450);
+        expectedSlot1.setDoctor(expectedDoctor);
         var expectedSlotId2 = 5678;
-    	var expectedSlot2 = new Slot3().withId(expectedSlotId2).withStart(1600).withEnd(1650).withDoctor(expectedDoctor)
-    			.withLink(urlFrom("/level3/doctors/" + expectedSlotId2));
+    	var expectedSlot2 = new Slot3().withLink(urlFrom("/level3/doctors/" + expectedSlotId2));
+        expectedSlot2.setId(expectedSlotId2);
+        expectedSlot2.setStart(1600);
+        expectedSlot2.setEnd(1650);
+        expectedSlot2.setDoctor(expectedDoctor);        
         var expectedOpenSlotList = new OpenSlotList3();
         expectedOpenSlotList.setSlots(List.of(expectedSlot1, expectedSlot2));        
         var headers = new HttpHeaders();

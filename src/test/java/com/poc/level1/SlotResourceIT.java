@@ -19,10 +19,14 @@ class SlotResourceIT extends BaseIT {
 
     @Test
     void shouldReturnBookedAppointmentWhenRequestItAndSlotIsAvailable() 
-    		throws Exception {
+    		  throws Exception {
         var requestBody = readJsonFrom(SEED_MAPPINGS_DIR + "1_booking_details_request.json");        
         var expectedId = 1234;
-        var expectedSlot = new Slot1().withId(expectedId).withStart(1400).withEnd(1450).withDoctor("mjones");
+        var expectedSlot = new Slot1();
+        expectedSlot.setId(expectedId);
+        expectedSlot.setStart(1400);
+        expectedSlot.setEnd(1450);
+        expectedSlot.setDoctor("mjones");
         var expectedAppointment = new Appointment1();
         expectedAppointment.setSlot(expectedSlot);
         expectedAppointment.setPatient("jsmith");
@@ -41,10 +45,14 @@ class SlotResourceIT extends BaseIT {
 
     @Test
     void shouldReturnSlotNotAvailableWhenRequestAppointmentAndSlotIsNotAvailable() 
-    		throws Exception {
+    		  throws Exception {
         var requestBody = readJsonFrom(SEED_MAPPINGS_DIR + "1_booking_details_request.json");        
         var expectedId = 777;
-        var expectedSlot = new Slot1().withId(expectedId).withStart(1500).withEnd(1550).withDoctor("mjones");
+        var expectedSlot = new Slot1();
+        expectedSlot.setId(expectedId);
+        expectedSlot.setStart(1500);
+        expectedSlot.setEnd(1550);
+        expectedSlot.setDoctor("mjones");
         var expectedAppointment = new Appointment1();
         expectedAppointment.setSlot(expectedSlot);
         expectedAppointment.setPatient("jsmith");

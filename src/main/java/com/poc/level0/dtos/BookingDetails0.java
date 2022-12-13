@@ -21,15 +21,5 @@ public class BookingDetails0 {
     public void setPatient(String patient) {
         this.patient = patient;
     }
-
-    public BookingDetails0 withSlot(Slot0 slot) {
-    	this.slot = slot;
-    	return this;
-    }
-    
-    public BookingDetails0 withPatient(String patient) {
-    	this.patient = patient;
-    	return this;
-    }
     
 }

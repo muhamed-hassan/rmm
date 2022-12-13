@@ -23,8 +23,14 @@ class AppointmentServiceIT extends BaseIT {
     		throws Exception {
         var requestBody = readJsonFrom(SEED_MAPPINGS_DIR + "0_open_slot_request.json");        
         var expectedDoctor = "mjones";
-        var expectedSlot1 = new Slot0().withStart(1400).withEnd(1450).withDoctor(expectedDoctor);
-    	var expectedSlot2 = new Slot0().withStart(1600).withEnd(1650).withDoctor(expectedDoctor);    	
+        var expectedSlot1 = new Slot0();
+        expectedSlot1.setStart(1400);
+        expectedSlot1.setEnd(1450);
+        expectedSlot1.setDoctor(expectedDoctor);
+    	var expectedSlot2 = new Slot0();    
+        expectedSlot2.setStart(1600);
+        expectedSlot2.setEnd(1650);
+        expectedSlot2.setDoctor(expectedDoctor);
         var expectedOpenSlotList = new OpenSlotList0();
         expectedOpenSlotList.setSlots(List.of(expectedSlot1, expectedSlot2));        
         var headers = new HttpHeaders();
@@ -43,7 +49,10 @@ class AppointmentServiceIT extends BaseIT {
     void shouldReturnBookedAppointmentWhenRequestItAndSlotIsAvailable() 
     		throws Exception {
         var requestBody = readJsonFrom(SEED_MAPPINGS_DIR + "0_available_booking_details_request.json");        
-        var expectedSlot = new Slot0().withStart(1400).withEnd(1450).withDoctor("mjones");
+        var expectedSlot = new Slot0();
+        expectedSlot.setStart(1400);
+        expectedSlot.setEnd(1450);
+        expectedSlot.setDoctor("mjones");
         var expectedAppointment = new Appointment0();
         expectedAppointment.setSlot(expectedSlot);
         expectedAppointment.setPatient("jsmith");
@@ -64,7 +73,10 @@ class AppointmentServiceIT extends BaseIT {
     void shouldReturnSlotNotAvailableWhenRequestAppointmentAndSlotIsNotAvailable() 
     		throws Exception {
         var requestBody = readJsonFrom(SEED_MAPPINGS_DIR + "0_unavailable_booking_details_request.json");
-        var expectedSlot = new Slot0().withStart(1500).withEnd(1550).withDoctor("mjones");
+        var expectedSlot = new Slot0();
+        expectedSlot.setStart(1500);
+        expectedSlot.setEnd(1550);
+        expectedSlot.setDoctor("mjones");
         var expectedAppointment = new Appointment0();
         expectedAppointment.setSlot(expectedSlot);
         expectedAppointment.setPatient("jsmith");

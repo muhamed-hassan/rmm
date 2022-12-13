@@ -56,8 +56,14 @@ class SlotResourceIT extends BaseIT {
     void shouldReturnStatus200AndBookedAppointmentWhenSlotHaveBookedAppointment() 
     		throws Exception {
         var slotId = 1234;        
-        var expectedSlot = new Slot2().withId(slotId).withStart(1400).withEnd(1450).withDoctor("mjones");
-    	var expectedAppointment = new Appointment2().withSlot(expectedSlot).withPatient("jsmith");          
+        var expectedSlot = new Slot2();
+        expectedSlot.setId(slotId);
+        expectedSlot.setStart(1400);
+        expectedSlot.setEnd(1450);
+        expectedSlot.setDoctor("mjones");
+    	var expectedAppointment = new Appointment2(); 
+        expectedAppointment.setSlot(expectedSlot);
+        expectedAppointment.setPatient("jsmith");         
         var headers = new HttpHeaders();
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));        
         var httpEntity = new HttpEntity<>(headers);

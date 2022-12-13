@@ -43,26 +43,6 @@ public class Slot2 {
     public void setDoctor(String doctor) {
         this.doctor = doctor;
     }
-    
-    public Slot2 withId(int id) {
-    	this.id = id;
-    	return this;
-    }
-    
-    public Slot2 withStart(int start) {
-    	this.start = start;
-    	return this;
-    }
-    
-    public Slot2 withEnd(int end) {
-    	this.end = end;
-    	return this;
-    }
-    
-    public Slot2 withDoctor(String doctor) {
-    	this.doctor = doctor;
-    	return this;
-    }
 
 	@Override
 	public int hashCode() {

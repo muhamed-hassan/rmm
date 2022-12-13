@@ -22,8 +22,16 @@ public class Level1DoctorResource {
 
     @PostMapping("{doctorName}")
     public OpenSlotList1 getOpenSlots(@PathVariable String doctorName, @RequestBody OpenSlot1 openSlot) {
-    	var slot1 = new Slot1().withId(1234).withStart(1400).withEnd(1450).withDoctor(doctorName);
-    	var slot2 = new Slot1().withId(5678).withStart(1600).withEnd(1650).withDoctor(doctorName);
+    	var slot1 = new Slot1();
+        slot1.setId(1234);
+        slot1.setStart(1400);
+        slot1.setEnd(1450);
+        slot1.setDoctor(doctorName);
+        var slot2 = new Slot1();
+        slot2.setId(5678);
+        slot2.setStart(1600);
+        slot2.setEnd(1650);
+        slot2.setDoctor(doctorName); 
         var openSlotList = new OpenSlotList1();
         openSlotList.setSlots(List.of(slot1, slot2));
         return openSlotList;

@@ -23,11 +23,19 @@ public class Level2DoctorResource {
 
     @GetMapping("{doctorName}/slots")
     public ResponseEntity<OpenSlotList2> getOpenSlots(@PathVariable String doctorName, @RequestParam @DateTimeFormat(pattern = "yyyyMMdd") Date date) {
-    	var slot1 = new Slot2().withId(1234).withStart(1400).withEnd(1450).withDoctor(doctorName);
-    	var slot2 = new Slot2().withId(5678).withStart(1600).withEnd(1650).withDoctor(doctorName);
-        var openSlotList = new OpenSlotList2();
-        openSlotList.setSlots(List.of(slot1, slot2));
-        return ResponseEntity.ok(openSlotList);
+    	var slot1 = new Slot2();
+        slot1.setId(1234);
+        slot1.setStart(1400);
+        slot1.setEnd(1450);
+        slot1.setDoctor(doctorName);
+        var slot2 = new Slot2();
+        slot2.setId(5678);
+        slot2.setStart(1600);
+        slot2.setEnd(1650);
+        slot2.setDoctor(doctorName); 
+        var responseBody = new OpenSlotList2();
+        responseBody.setSlots(List.of(slot1, slot2));
+        return ResponseEntity.ok(responseBody);
     }
 
 }

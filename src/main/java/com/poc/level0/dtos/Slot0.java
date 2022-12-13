@@ -33,21 +33,6 @@ public class Slot0 {
     public void setDoctor(String doctor) {
         this.doctor = doctor;
     }
-    
-    public Slot0 withStart(int start) {
-    	this.start = start;
-    	return this;
-    }
-    
-    public Slot0 withEnd(int end) {
-    	this.end = end;
-    	return this;
-    }
-    
-    public Slot0 withDoctor(String doctor) {
-    	this.doctor = doctor;
-    	return this;
-    }
 
     @Override
     public int hashCode() {

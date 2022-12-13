@@ -46,26 +46,6 @@ public class Slot3 extends HateosSupport {
     public void setDoctor(String doctor) {
         this.doctor = doctor;
     }
-      
-    public Slot3 withId(int id) {
-    	this.id = id;
-    	return this;
-    }
-    
-    public Slot3 withStart(int start) {
-    	this.start = start;
-    	return this;
-    }
-    
-    public Slot3 withEnd(int end) {
-    	this.end = end;
-    	return this;
-    }
-    
-    public Slot3 withDoctor(String doctor) {
-    	this.doctor = doctor;
-    	return this;
-    }
     
     public Slot3 withLink(String uri) {
     	getLinks().add(new Link().withUri(uri).withRel(Link.SELF).withType(Link.type.GET.toString()));

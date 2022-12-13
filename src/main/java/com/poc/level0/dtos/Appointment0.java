@@ -33,21 +33,6 @@ public class Appointment0 {
     public void setStatus(String status) {
         this.status = status;
     }
-    
-    public Appointment0 withSlot(Slot0 slot) {
-    	this.slot = slot;
-    	return this;
-    }
-    
-    public Appointment0 withPatient(String patient) {
-    	this.patient = patient;
-    	return this;
-    }
-    
-    public Appointment0 withStatus(String status) {
-    	this.status = status;
-    	return this;
-    }
 
 	@Override
 	public int hashCode() {

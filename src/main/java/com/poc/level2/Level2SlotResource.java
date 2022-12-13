@@ -40,9 +40,15 @@ public class Level2SlotResource {
 
     @GetMapping("{slotId}/appointment")
     public ResponseEntity<Appointment2> getAppointment(@PathVariable int slotId) {
-    	var slot = new Slot2().withId(slotId).withStart(1400).withEnd(1450).withDoctor("mjones");
-    	var appointment = new Appointment2().withSlot(slot).withPatient("jsmith");    	
-        return ResponseEntity.ok(appointment);
+    	var slot = new Slot2();
+        slot.setId(slotId);
+        slot.setStart(1400);
+        slot.setEnd(1450);
+        slot.setDoctor("mjones");
+    	var responseBody = new Appointment2();    	
+        responseBody.setSlot(slot);
+        responseBody.setPatient("jsmith"); 
+        return ResponseEntity.ok(responseBody);
     }
 
 }
