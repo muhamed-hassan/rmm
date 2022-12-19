@@ -1,12 +1,28 @@
-package com.poc.level0.dtos;
+package com.poc.level3.models;
 
-public class Slot0 {
+import static com.poc.level3.hateos.Link.SELF;
+import static com.poc.level3.hateos.Link.Type.GET;
+
+import com.poc.level3.hateos.HateosSupport;
+import com.poc.level3.hateos.Link;
+
+public class Slot3 extends HateosSupport {
+
+    private int id;
 
     private int start;
 
     private int end;
 
     private String doctor;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getStart() {
         return start;
@@ -31,14 +47,21 @@ public class Slot0 {
     public void setDoctor(String doctor) {
         this.doctor = doctor;
     }
+    
+    public Slot3 withLink(String uri) {
+    	Link link = new Link();
+    	link.setUri(uri);
+    	link.setRel(SELF);
+    	link.setType(GET);
+    	addLink(link);
+        return this;
+    }
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((doctor == null) ? 0 : doctor.hashCode());
-		result = prime * result + end;
-		result = prime * result + start;
+		int result = super.hashCode();
+		result = prime * result + id;
 		return result;
 	}
 
@@ -46,19 +69,12 @@ public class Slot0 {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Slot0 other = (Slot0) obj;
-		if (doctor == null) {
-			if (other.doctor != null)
-				return false;
-		} else if (!doctor.equals(other.doctor))
-			return false;
-		if (end != other.end)
-			return false;
-		if (start != other.start)
+		Slot3 other = (Slot3) obj;
+		if (id != other.id)
 			return false;
 		return true;
 	}

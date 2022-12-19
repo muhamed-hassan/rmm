@@ -1,6 +1,6 @@
-package com.poc.level2.dtos;
+package com.poc.level0.models;
 
-public class OpenSlot2 {
+public class OpenSlot0 {
 
     private String date;
 

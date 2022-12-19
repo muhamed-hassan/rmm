@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.poc.level0.dtos.Appointment0;
-import com.poc.level0.dtos.BookingDetails0;
-import com.poc.level0.dtos.OpenSlot0;
-import com.poc.level0.dtos.OpenSlotList0;
-import com.poc.level0.dtos.Slot0;
+import com.poc.level0.models.Appointment0;
+import com.poc.level0.models.BookingDetails0;
+import com.poc.level0.models.OpenSlot0;
+import com.poc.level0.models.OpenSlotList0;
+import com.poc.level0.models.Slot0;
 
 @RestController
 @RequestMapping(
@@ -22,7 +22,7 @@ import com.poc.level0.dtos.Slot0;
     produces = MediaType.APPLICATION_JSON_VALUE)
 public class Level0AppointmentService {
 
-    @PostMapping("getOpenSlots")
+	@RequestMapping(method = RequestMethod.POST, value = "getOpenSlots")
     public OpenSlotList0 getOpenSlots(@RequestBody OpenSlot0 openSlot) {
     	Slot0 slot1 = new Slot0();
         slot1.setStart(1400);
@@ -40,7 +40,7 @@ public class Level0AppointmentService {
         return openSlotList;
     }
 
-    @PostMapping("bookAppointment")
+    @RequestMapping(method = RequestMethod.POST, value = "bookAppointment")
     public Appointment0 bookAppointment(@RequestBody BookingDetails0 bookingDetails) {
     	Appointment0 appointment = new Appointment0();
         appointment.setSlot(bookingDetails.getSlot());

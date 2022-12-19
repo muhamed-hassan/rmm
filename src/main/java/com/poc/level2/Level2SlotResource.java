@@ -1,19 +1,20 @@
 package com.poc.level2;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.poc.level2.dtos.Appointment2;
-import com.poc.level2.dtos.BookingDetails2;
-import com.poc.level2.dtos.Slot2;
+import com.poc.level2.models.Appointment2;
+import com.poc.level2.models.BookingDetails2;
+import com.poc.level2.models.Slot2;
 
 @RestController
 @RequestMapping(
@@ -21,24 +22,21 @@ import com.poc.level2.dtos.Slot2;
     produces = MediaType.APPLICATION_JSON_VALUE)
 public class Level2SlotResource {
 
-    @PostMapping(value = "{slotId}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, value = "{slotId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> bookAppointment(@PathVariable int slotId, @RequestBody BookingDetails2 bookingDetails) {
-        ResponseEntity.BodyBuilder bodyBuilder = null;
-        if (slotId == 1234) {
-            bodyBuilder = ResponseEntity
-                                .status(HttpStatus.CREATED)
-                                .location(ServletUriComponentsBuilder
-                                    .fromCurrentRequest()
-                                    .path("/appointment")
-                                    .build()
-                                    .toUri());
-        } else {
-            bodyBuilder = ResponseEntity.status(HttpStatus.CONFLICT);
+    	ResponseEntity<Void> responseEntity = null;
+        if (slotId == 1234) {        	
+        	MultiValueMap<String, String> httpHeaders = new HttpHeaders();
+        	httpHeaders.add("Location", ServletUriComponentsBuilder.fromCurrentRequest()
+                                    .path("/appointment").build().toUri().toString());
+        	responseEntity = new ResponseEntity<Void>(httpHeaders, HttpStatus.CREATED);
+        } else {            
+            responseEntity = new ResponseEntity<Void>(HttpStatus.CONFLICT);
         }
-        return bodyBuilder.build();
+        return responseEntity;
     }
 
-    @GetMapping("{slotId}/appointment")
+    @RequestMapping(method = RequestMethod.GET, value = "{slotId}/appointment")
     public ResponseEntity<Appointment2> getAppointment(@PathVariable int slotId) {
     	Slot2 slot = new Slot2();
         slot.setId(slotId);
@@ -47,8 +45,8 @@ public class Level2SlotResource {
         slot.setDoctor("mjones");
         Appointment2 appointment = new Appointment2();    	
         appointment.setSlot(slot);
-        appointment.setPatient("jsmith"); 
-        return ResponseEntity.ok(appointment);
+        appointment.setPatient("jsmith");
+        return new ResponseEntity<Appointment2>(appointment, HttpStatus.OK);
     }
 
 }

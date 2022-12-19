@@ -5,14 +5,14 @@ import java.util.List;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.poc.level1.dtos.OpenSlot1;
-import com.poc.level1.dtos.OpenSlotList1;
-import com.poc.level1.dtos.Slot1;
+import com.poc.level1.models.OpenSlot1;
+import com.poc.level1.models.OpenSlotList1;
+import com.poc.level1.models.Slot1;
 
 @RestController
 @RequestMapping(
@@ -21,7 +21,7 @@ import com.poc.level1.dtos.Slot1;
     produces = MediaType.APPLICATION_JSON_VALUE)
 public class Level1DoctorResource {
 
-    @PostMapping("{doctorName}")
+    @RequestMapping(method = RequestMethod.POST, value = "{doctorName}")
     public OpenSlotList1 getOpenSlots(@PathVariable String doctorName, @RequestBody OpenSlot1 openSlot) {
     	Slot1 slot1 = new Slot1();
         slot1.setId(1234);

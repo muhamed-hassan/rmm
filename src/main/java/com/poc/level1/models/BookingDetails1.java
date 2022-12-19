@@ -1,6 +1,6 @@
-package com.poc.level3.dtos;
+package com.poc.level1.models;
 
-public class BookingDetails3 {
+public class BookingDetails1 {
 
     private String patient;
 

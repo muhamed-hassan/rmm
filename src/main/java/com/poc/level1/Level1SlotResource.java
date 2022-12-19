@@ -2,14 +2,14 @@ package com.poc.level1;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.poc.level1.dtos.Appointment1;
-import com.poc.level1.dtos.BookingDetails1;
-import com.poc.level1.dtos.Slot1;
+import com.poc.level1.models.Appointment1;
+import com.poc.level1.models.BookingDetails1;
+import com.poc.level1.models.Slot1;
 
 @RestController
 @RequestMapping(
@@ -18,7 +18,7 @@ import com.poc.level1.dtos.Slot1;
     produces = MediaType.APPLICATION_JSON_VALUE)
 public class Level1SlotResource {
 
-    @PostMapping("{slotId}/appointment")
+    @RequestMapping(method = RequestMethod.POST, value = "{slotId}/appointment")
     public Appointment1 bookAppointment(@PathVariable int slotId, @RequestBody BookingDetails1 bookingDetails) {    	
     	Slot1 slot = new Slot1();
         slot.setId(slotId);
