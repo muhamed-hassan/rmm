@@ -1,4 +1,4 @@
-package com.poc.level1.dtos;
+package com.poc.level1.models;
 
 public class Slot1 {
 

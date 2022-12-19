@@ -5,16 +5,17 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.poc.level2.dtos.OpenSlotList2;
-import com.poc.level2.dtos.Slot2;
+import com.poc.level2.models.OpenSlotList2;
+import com.poc.level2.models.Slot2;
 
 @RestController
 @RequestMapping(
@@ -22,7 +23,7 @@ import com.poc.level2.dtos.Slot2;
     produces = MediaType.APPLICATION_JSON_VALUE)
 public class Level2DoctorResource {
 
-    @GetMapping("{doctorName}/slots")
+    @RequestMapping(method = RequestMethod.GET, value = "{doctorName}/slots")
     public ResponseEntity<OpenSlotList2> getOpenSlots(@PathVariable String doctorName, @RequestParam @DateTimeFormat(pattern = "yyyyMMdd") Date date) {
     	Slot2 slot1 = new Slot2();
         slot1.setId(1234);
@@ -39,7 +40,7 @@ public class Level2DoctorResource {
         slots.add(slot1);
         slots.add(slot2);
         openSlotList.setSlots(slots);
-        return ResponseEntity.ok(openSlotList);
+        return new ResponseEntity<OpenSlotList2>(openSlotList, HttpStatus.OK);
     }
 
 }

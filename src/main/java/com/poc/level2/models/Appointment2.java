@@ -1,18 +1,16 @@
-package com.poc.level1.dtos;
+package com.poc.level2.models;
 
-public class Appointment1 {
+public class Appointment2 {
 
-    private Slot1 slot;
+    private Slot2 slot;
 
     private String patient;
 
-    private String status;
-
-    public Slot1 getSlot() {
+    public Slot2 getSlot() {
         return slot;
     }
 
-    public void setSlot(Slot1 slot) {
+    public void setSlot(Slot2 slot) {
         this.slot = slot;
     }
 
@@ -24,21 +22,12 @@ public class Appointment1 {
         this.patient = patient;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((patient == null) ? 0 : patient.hashCode());
 		result = prime * result + ((slot == null) ? 0 : slot.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
 
@@ -50,7 +39,7 @@ public class Appointment1 {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Appointment1 other = (Appointment1) obj;
+		Appointment2 other = (Appointment2) obj;
 		if (patient == null) {
 			if (other.patient != null)
 				return false;
@@ -60,11 +49,6 @@ public class Appointment1 {
 			if (other.slot != null)
 				return false;
 		} else if (!slot.equals(other.slot))
-			return false;
-		if (status == null) {
-			if (other.status != null)
-				return false;
-		} else if (!status.equals(other.status))
 			return false;
 		return true;
 	}

@@ -1,4 +1,4 @@
-package com.poc.level3.dtos;
+package com.poc.level3.models;
 
 import static com.poc.level3.hateos.Link.SELF;
 import static com.poc.level3.hateos.Link.Type.GET;

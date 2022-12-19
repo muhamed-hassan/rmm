@@ -1,4 +1,4 @@
-package com.poc.level3.dtos;
+package com.poc.level3.models;
 
 import java.util.List;
 

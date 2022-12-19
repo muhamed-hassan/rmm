@@ -1,12 +1,6 @@
-package com.poc.level3.dtos;
+package com.poc.level2.models;
 
-import static com.poc.level3.hateos.Link.SELF;
-import static com.poc.level3.hateos.Link.Type.GET;
-
-import com.poc.level3.hateos.HateosSupport;
-import com.poc.level3.hateos.Link;
-
-public class Slot3 extends HateosSupport {
+public class Slot2 {
 
     private int id;
 
@@ -47,20 +41,11 @@ public class Slot3 extends HateosSupport {
     public void setDoctor(String doctor) {
         this.doctor = doctor;
     }
-    
-    public Slot3 withLink(String uri) {
-    	Link link = new Link();
-    	link.setUri(uri);
-    	link.setRel(SELF);
-    	link.setType(GET);
-    	addLink(link);
-        return this;
-    }
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = super.hashCode();
+		int result = 1;
 		result = prime * result + id;
 		return result;
 	}
@@ -69,11 +54,11 @@ public class Slot3 extends HateosSupport {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (!super.equals(obj))
+		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Slot3 other = (Slot3) obj;
+		Slot2 other = (Slot2) obj;
 		if (id != other.id)
 			return false;
 		return true;

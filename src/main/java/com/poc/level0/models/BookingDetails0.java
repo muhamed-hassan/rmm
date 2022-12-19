@@ -1,4 +1,4 @@
-package com.poc.level0.dtos;
+package com.poc.level0.models;
 
 public class BookingDetails0 {
 
