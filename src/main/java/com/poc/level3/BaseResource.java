@@ -5,11 +5,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class BaseResource {
 
     protected String constructUri(String baseApiUri, String appendToCurrentUri) {
-        var contextPath = ServletUriComponentsBuilder.fromCurrentContextPath().toUriString();
-        return new StringBuilder(contextPath)
-                        .append(baseApiUri)
-                        .append(appendToCurrentUri)
-                        .toString();
+    	String contextPath = ServletUriComponentsBuilder.fromCurrentContextPath().toUriString();
+    	String uri = contextPath + baseApiUri + appendToCurrentUri;
+        return uri;
     }
 
 }

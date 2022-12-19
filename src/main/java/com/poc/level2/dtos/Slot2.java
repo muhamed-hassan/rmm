@@ -1,7 +1,5 @@
 package com.poc.level2.dtos;
 
-import java.util.Objects;
-
 public class Slot2 {
 
     private int id;
@@ -46,19 +44,24 @@ public class Slot2 {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
 	}
 
 	@Override
-	public boolean equals(Object that) {
-		if (this == that)
+	public boolean equals(Object obj) {
+		if (this == obj)
 			return true;
-		if (that == null)
+		if (obj == null)
 			return false;
-		if (getClass() != that.getClass())
+		if (getClass() != obj.getClass())
 			return false;
-		var other = (Slot2) that;
-		return id == other.id;
+		Slot2 other = (Slot2) obj;
+		if (id != other.id)
+			return false;
+		return true;
 	}
 
 }

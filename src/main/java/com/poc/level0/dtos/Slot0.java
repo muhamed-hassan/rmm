@@ -1,7 +1,5 @@
 package com.poc.level0.dtos;
 
-import java.util.Objects;
-
 public class Slot0 {
 
     private int start;
@@ -34,23 +32,35 @@ public class Slot0 {
         this.doctor = doctor;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(doctor, end, start);
-    }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((doctor == null) ? 0 : doctor.hashCode());
+		result = prime * result + end;
+		result = prime * result + start;
+		return result;
+	}
 
-    @Override
-    public boolean equals(Object other) {
-        if (this == other) {
-            return true;
-        }
-        if (other == null || getClass() != other.getClass()) {
-            return false;
-        }
-        var that = (Slot0) other;
-        return Objects.equals(doctor, that.doctor)
-            && Objects.equals(end, that.end)
-            && Objects.equals(start, that.start);
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Slot0 other = (Slot0) obj;
+		if (doctor == null) {
+			if (other.doctor != null)
+				return false;
+		} else if (!doctor.equals(other.doctor))
+			return false;
+		if (end != other.end)
+			return false;
+		if (start != other.start)
+			return false;
+		return true;
+	}
 
 }

@@ -1,5 +1,6 @@
 package com.poc.level3;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,19 +25,22 @@ public class Level3DoctorResource extends BaseResource {
 
     @GetMapping("{doctorName}/slots")
     public ResponseEntity<OpenSlotList3> getOpenSlots(@PathVariable String doctorName, @RequestParam @DateTimeFormat(pattern = "yyyyMMdd") Date date) {
-    	var slot1 = new Slot3().withLink(constructUri(BASE_API_URI, "/1234"));
+    	Slot3 slot1 = new Slot3().withLink(constructUri(BASE_API_URI, "/1234"));
     	slot1.setId(1234);
         slot1.setStart(1400);
         slot1.setEnd(1450);
         slot1.setDoctor(doctorName);
-        var slot2 = new Slot3().withLink(constructUri(BASE_API_URI, "/5678"));    	
+        Slot3 slot2 = new Slot3().withLink(constructUri(BASE_API_URI, "/5678"));    	
     	slot2.setId(5678);
         slot2.setStart(1600);
         slot2.setEnd(1650);
         slot2.setDoctor(doctorName);
-        var responseBody = new OpenSlotList3();
-    	responseBody.setSlots(List.of(slot1, slot2));
-        return ResponseEntity.ok(responseBody);
+        OpenSlotList3 openSlotList = new OpenSlotList3();
+        List<Slot3> slots = new ArrayList<Slot3>();
+        slots.add(slot1);
+        slots.add(slot2);
+        openSlotList.setSlots(slots);
+        return ResponseEntity.ok(openSlotList);
     }
 
 }
