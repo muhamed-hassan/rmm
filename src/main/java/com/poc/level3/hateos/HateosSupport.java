@@ -2,31 +2,38 @@ package com.poc.level3.hateos;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class HateosSupport {
 
-    private List<Link> links = new ArrayList<>();
+    private List<Link> links = new ArrayList<Link>();
 
-    public List<Link> getLinks() {
-        return links;
+    protected void addLink(Link link) {
+    	links.add(link);
     }
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(links);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((links == null) ? 0 : links.hashCode());
+		return result;
 	}
 
 	@Override
-	public boolean equals(Object that) {
-		if (this == that)
+	public boolean equals(Object obj) {
+		if (this == obj)
 			return true;
-		if (that == null)
+		if (obj == null)
 			return false;
-		if (getClass() != that.getClass())
+		if (getClass() != obj.getClass())
 			return false;
-		var other = (HateosSupport) that;
-		return Objects.equals(links, other.links);
+		HateosSupport other = (HateosSupport) obj;
+		if (links == null) {
+			if (other.links != null)
+				return false;
+		} else if (!links.equals(other.links))
+			return false;
+		return true;
 	}
 
 }
