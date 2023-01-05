@@ -15,7 +15,7 @@
 	<artifactId>RMM</artifactId>
 	<version>1.0</version>
 	<name>RMM</name>
-	<description>POC to demonstrate various levels of richardson maturity model</description>
+	<description>POC to demonstrate the various levels of richardson maturity model</description>
 
 	<properties>
 		<java.version>11</java.version>

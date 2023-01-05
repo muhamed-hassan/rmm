@@ -23,15 +23,15 @@ public class Level3SlotResource extends BaseResource {
     private static final String BASE_API_URI = "/level3/slots";
 
     @RequestMapping(method = RequestMethod.POST, value = "{slotId}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> bookAppointment(@PathVariable int slotId, @RequestBody BookingDetails3 bookingDetails) {
-    	ResponseEntity<Void> responseEntity = null;
+    public ResponseEntity<Object> bookAppointment(@PathVariable int slotId, @RequestBody BookingDetails3 bookingDetails) {
+    	ResponseEntity<Object> responseEntity = null;
         if (slotId == 1234) {        	
         	MultiValueMap<String, String> httpHeaders = new HttpHeaders();
         	httpHeaders.add("Location", ServletUriComponentsBuilder.fromCurrentRequest()
                                     .path("/appointment").build().toUri().toString());
-        	responseEntity = new ResponseEntity<Void>(httpHeaders, HttpStatus.CREATED);
+        	responseEntity = new ResponseEntity<Object>(httpHeaders, HttpStatus.CREATED);
         } else {            
-            responseEntity = new ResponseEntity<Void>(HttpStatus.CONFLICT);
+            responseEntity = new ResponseEntity<Object>(HttpStatus.CONFLICT);
         }
         return responseEntity;
     }
