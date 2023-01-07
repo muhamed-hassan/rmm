@@ -1,10 +1,8 @@
 package com.poc.level2;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +22,7 @@ import com.poc.level2.models.Slot2;
 public class Level2DoctorResource {
 
     @RequestMapping(method = RequestMethod.GET, value = "{doctorName}/slots")
-    public ResponseEntity<OpenSlotList2> getOpenSlots(@PathVariable String doctorName, @RequestParam @DateTimeFormat(pattern = "yyyyMMdd") Date date) {
+    public ResponseEntity<OpenSlotList2> getOpenSlots(@PathVariable String doctorName, @RequestParam String date) {
     	Slot2 slot1 = new Slot2();
         slot1.setId(1234);
         slot1.setStart(1400);

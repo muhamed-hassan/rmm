@@ -1,10 +1,8 @@
 package com.poc.level3;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,18 +18,18 @@ import com.poc.level3.models.Slot3;
 @RequestMapping(
     value = "level3/doctors",
     produces = "application/hal+json")
-public class Level3DoctorResource extends BaseResource {
+public class Level3DoctorResource {
 
     private static final String BASE_API_URI = "/level3/doctors";
 
     @RequestMapping(method = RequestMethod.GET, value = "{doctorName}/slots")
-    public ResponseEntity<OpenSlotList3> getOpenSlots(@PathVariable String doctorName, @RequestParam @DateTimeFormat(pattern = "yyyyMMdd") Date date) {
-    	Slot3 slot1 = new Slot3().withLink(constructUri(BASE_API_URI, "/1234"));
+    public ResponseEntity<OpenSlotList3> getOpenSlots(@PathVariable String doctorName, @RequestParam String date) {
+    	Slot3 slot1 = new Slot3().withLink(BASE_API_URI + "/1234");
     	slot1.setId(1234);
         slot1.setStart(1400);
         slot1.setEnd(1450);
         slot1.setDoctor(doctorName);
-        Slot3 slot2 = new Slot3().withLink(constructUri(BASE_API_URI, "/5678"));    	
+        Slot3 slot2 = new Slot3().withLink(BASE_API_URI + "/5678");    	
     	slot2.setId(5678);
         slot2.setStart(1600);
         slot2.setEnd(1650);

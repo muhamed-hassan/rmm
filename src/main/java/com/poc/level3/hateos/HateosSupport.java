@@ -10,6 +10,10 @@ public class HateosSupport {
     protected void addLink(Link link) {
     	links.add(link);
     }
+    
+    public List<Link> getLinks() {
+		return links;
+	}
 
 	@Override
 	public int hashCode() {
