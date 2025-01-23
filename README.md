@@ -6,5 +6,4 @@
 
 ***
 
-![sketchdump_03___fighting_kakashi_by_kejablank_d8kybqj-fullview](https://github.com/user-attachments/assets/d3455539-4de4-4175-881d-b3f31bc5d4f0)
-
+![the_last_stand_of_the_crimson_knights_by_socialgatheringstar_dihowpj-fullview](https://github.com/user-attachments/assets/9cadbfe7-f5b6-4897-857f-0fb963f7f642)
