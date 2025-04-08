@@ -14,13 +14,6 @@
 	<groupId>com.poc</groupId>
 	<artifactId>RMM</artifactId>
 	<version>1.0</version>
-	<name>RMM</name>
-	<description>POC to demonstrate the various levels of richardson maturity model</description>
-
-	<properties>
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<maven.compiler.source>1.8</maven.compiler.source>
-	</properties>
 
 	<dependencies>
 		<dependency>
@@ -31,6 +24,14 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>8</source>
+					<target>8</target>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
