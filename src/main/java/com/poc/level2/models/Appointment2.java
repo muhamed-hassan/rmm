@@ -24,7 +24,7 @@ public class Appointment2 {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
+		int prime = 31;
 		int result = 1;
 		result = prime * result + ((patient == null) ? 0 : patient.hashCode());
 		result = prime * result + ((slot == null) ? 0 : slot.hashCode());

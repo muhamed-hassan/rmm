@@ -20,7 +20,7 @@ import com.poc.level3.models.Slot3;
 @RequestMapping("level3/slots")
 public class Level3SlotResource {
 
-    private static final String BASE_API_URI = "/level3/slots";
+    private static String BASE_API_URI = "/level3/slots";
 
     @RequestMapping(method = RequestMethod.POST, value = "{slotId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> bookAppointment(@PathVariable int slotId, @RequestBody BookingDetails3 bookingDetails) {

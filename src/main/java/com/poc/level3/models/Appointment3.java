@@ -78,7 +78,7 @@ public class Appointment3 extends HateosSupport {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
+		int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + ((patient == null) ? 0 : patient.hashCode());
 		result = prime * result + ((slot == null) ? 0 : slot.hashCode());

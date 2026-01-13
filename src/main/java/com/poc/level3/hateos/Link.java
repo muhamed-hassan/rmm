@@ -2,7 +2,7 @@ package com.poc.level3.hateos;
 
 public class Link {
 
-    public static final String SELF = "self";
+    public static String SELF = "self";
 
     public enum Type {
         GET,
@@ -43,7 +43,7 @@ public class Link {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
+		int prime = 31;
 		int result = 1;
 		result = prime * result + ((rel == null) ? 0 : rel.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());

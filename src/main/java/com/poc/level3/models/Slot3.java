@@ -59,7 +59,7 @@ public class Slot3 extends HateosSupport {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
+		int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + id;
 		return result;

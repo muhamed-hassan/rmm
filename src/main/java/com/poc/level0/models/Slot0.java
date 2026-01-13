@@ -34,7 +34,7 @@ public class Slot0 {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
+		int prime = 31;
 		int result = 1;
 		result = prime * result + ((doctor == null) ? 0 : doctor.hashCode());
 		result = prime * result + end;

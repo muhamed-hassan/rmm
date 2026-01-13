@@ -20,7 +20,7 @@ import com.poc.level3.models.Slot3;
     produces = "application/hal+json")
 public class Level3DoctorResource {
 
-    private static final String BASE_API_URI = "/level3/doctors";
+    private static String BASE_API_URI = "/level3/doctors";
 
     @RequestMapping(method = RequestMethod.GET, value = "{doctorName}/slots")
     public ResponseEntity<OpenSlotList3> getOpenSlots(@PathVariable String doctorName, @RequestParam String date) {

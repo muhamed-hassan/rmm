@@ -17,7 +17,7 @@ public class HateosSupport {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
+		int prime = 31;
 		int result = 1;
 		result = prime * result + ((links == null) ? 0 : links.hashCode());
 		return result;
