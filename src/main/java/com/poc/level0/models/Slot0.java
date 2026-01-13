@@ -1,5 +1,7 @@
 package com.poc.level0.models;
 
+import java.util.Objects;
+
 public class Slot0 {
 
     private int start;
@@ -34,33 +36,24 @@ public class Slot0 {
 
 	@Override
 	public int hashCode() {
-		int prime = 31;
-		int result = 1;
-		result = prime * result + ((doctor == null) ? 0 : doctor.hashCode());
-		result = prime * result + end;
-		result = prime * result + start;
-		return result;
+		return Objects.hash(start, end, doctor);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean equals(Object object) {
+		if (this == object) {
 			return true;
-		if (obj == null)
+		}
+		if (object == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != object.getClass()) {
 			return false;
-		Slot0 other = (Slot0) obj;
-		if (doctor == null) {
-			if (other.doctor != null)
-				return false;
-		} else if (!doctor.equals(other.doctor))
-			return false;
-		if (end != other.end)
-			return false;
-		if (start != other.start)
-			return false;
-		return true;
+		}
+		Slot0 other = (Slot0) object;
+		return start == other.start && 
+				end == other.end && 
+				Objects.equals(doctor, other.doctor);
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.poc.level3.hateos;
 
+import java.util.Objects;
+
 public class EndpointURI {
 
     private HttpMethod httpMethod;
@@ -24,33 +26,23 @@ public class EndpointURI {
 
 	@Override
 	public int hashCode() {
-		int prime = 31;
-		int result = 1;
-		result = prime * result + ((httpMethod == null) ? 0 : httpMethod.hashCode());
-		result = prime * result + ((uri == null) ? 0 : uri.hashCode());
-		return result;
+		return Objects.hash(httpMethod, uri);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean equals(Object object) {
+		if (this == object) {
 			return true;
-		if (obj == null)
+		}
+		if (object == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != object.getClass()) {
 			return false;
-		EndpointURI other = (EndpointURI) obj;
-		if (httpMethod == null) {
-			if (other.httpMethod != null)
-				return false;
-		} else if (!httpMethod.equals(other.httpMethod))
-			return false;
-		if (uri == null) {
-			if (other.uri != null)
-				return false;
-		} else if (!uri.equals(other.uri))
-			return false;
-		return true;
+		}
+		EndpointURI other = (EndpointURI) object;
+		return httpMethod == other.httpMethod && 
+				Objects.equals(uri, other.uri);
 	}
 
 }

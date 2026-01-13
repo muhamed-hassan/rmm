@@ -1,5 +1,7 @@
 package com.poc.level2.models;
 
+import java.util.Objects;
+
 public class Slot2 {
 
     private int id;
@@ -44,24 +46,22 @@ public class Slot2 {
 
 	@Override
 	public int hashCode() {
-		int prime = 31;
-		int result = 1;
-		result = prime * result + id;
-		return result;
+		return Objects.hash(id);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean equals(Object object) {
+		if (this == object) {
 			return true;
-		if (obj == null)
+		}
+		if (object == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != object.getClass()) {
 			return false;
-		Slot2 other = (Slot2) obj;
-		if (id != other.id)
-			return false;
-		return true;
+		}
+		Slot2 other = (Slot2) object;
+		return id == other.id;
 	}
 
 }

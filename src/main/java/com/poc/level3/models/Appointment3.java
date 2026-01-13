@@ -1,6 +1,9 @@
 package com.poc.level3.models;
 
 import com.poc.level3.hateos.HateosSupport;
+
+import java.util.Objects;
+
 import com.poc.level3.hateos.EndpointURI;
 import com.poc.level3.hateos.HttpMethod;
 
@@ -56,33 +59,23 @@ public class Appointment3 extends HateosSupport {
 
 	@Override
 	public int hashCode() {
-		int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + ((patient == null) ? 0 : patient.hashCode());
-		result = prime * result + ((slot == null) ? 0 : slot.hashCode());
-		return result;
+		return Objects.hash(slot, patient);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean equals(Object object) {
+		if (this == object) {
 			return true;
-		if (!super.equals(obj))
+		}
+		if (object == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != object.getClass()) {
 			return false;
-		Appointment3 other = (Appointment3) obj;
-		if (patient == null) {
-			if (other.patient != null)
-				return false;
-		} else if (!patient.equals(other.patient))
-			return false;
-		if (slot == null) {
-			if (other.slot != null)
-				return false;
-		} else if (!slot.equals(other.slot))
-			return false;
-		return true;
+		}
+		Appointment3 other = (Appointment3) object;
+		return Objects.equals(slot, other.slot) &&
+				Objects.equals(patient, other.patient);
 	}
-    
+
 }

@@ -1,5 +1,7 @@
 package com.poc.level1.models;
 
+import java.util.Objects;
+
 public class Appointment1 {
 
     private Slot1 slot;
@@ -34,39 +36,24 @@ public class Appointment1 {
 
 	@Override
 	public int hashCode() {
-		int prime = 31;
-		int result = 1;
-		result = prime * result + ((patient == null) ? 0 : patient.hashCode());
-		result = prime * result + ((slot == null) ? 0 : slot.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
-		return result;
+		return Objects.hash(slot, patient, status);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean equals(Object object) {
+		if (this == object) {
 			return true;
-		if (obj == null)
+		}
+		if (object == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != object.getClass()) {
 			return false;
-		Appointment1 other = (Appointment1) obj;
-		if (patient == null) {
-			if (other.patient != null)
-				return false;
-		} else if (!patient.equals(other.patient))
-			return false;
-		if (slot == null) {
-			if (other.slot != null)
-				return false;
-		} else if (!slot.equals(other.slot))
-			return false;
-		if (status == null) {
-			if (other.status != null)
-				return false;
-		} else if (!status.equals(other.status))
-			return false;
-		return true;
+		}
+		Appointment1 other = (Appointment1) object;
+		return Objects.equals(slot, other.slot) && 
+				Objects.equals(patient, other.patient) && 
+				Objects.equals(status, other.status);
 	}
 
 }
