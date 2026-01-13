@@ -1,16 +1,16 @@
 package com.poc.level1.models;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class OpenSlotList1 {
 
-    private List<Slot1> slots;
+    private ArrayList<Slot1> slots;
 
-    public List<Slot1> getSlots() {
+    public ArrayList<Slot1> getSlots() {
         return slots;
     }
 
-    public void setSlots(List<Slot1> slots) {
+    public void setSlots(ArrayList<Slot1> slots) {
         this.slots = slots;
     }
 

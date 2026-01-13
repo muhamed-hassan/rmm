@@ -1,7 +1,6 @@
 package com.poc.level2;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -36,7 +35,7 @@ public class Level2DoctorResource {
         slot2.setEnd(1650);
         slot2.setDoctor(doctorName); 
         
-        List<Slot2> slots = new ArrayList<Slot2>();
+        ArrayList<Slot2> slots = new ArrayList<Slot2>();
         slots.add(slot1);
         slots.add(slot2);
         

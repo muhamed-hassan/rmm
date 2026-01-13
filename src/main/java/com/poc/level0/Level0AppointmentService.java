@@ -1,7 +1,6 @@
 package com.poc.level0;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,7 +34,7 @@ public class Level0AppointmentService {
         slot2.setDoctor(openSlot.getDoctor());  
         
         OpenSlotList0 openSlotList = new OpenSlotList0();
-        List<Slot0> slots = new ArrayList<Slot0>();
+        ArrayList<Slot0> slots = new ArrayList<Slot0>();
         slots.add(slot1);
         slots.add(slot2);
         openSlotList.setSlots(slots);

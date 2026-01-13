@@ -1,7 +1,6 @@
 package com.poc.level3;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,7 +39,7 @@ public class Level3DoctorResource {
         slot2.setDoctor(doctorName);
         
         OpenSlotList3 openSlotList = new OpenSlotList3();
-        List<Slot3> slots = new ArrayList<Slot3>();
+        ArrayList<Slot3> slots = new ArrayList<Slot3>();
         slots.add(slot1);
         slots.add(slot2);
         openSlotList.setSlots(slots); 

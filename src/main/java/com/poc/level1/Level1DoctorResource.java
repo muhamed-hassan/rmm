@@ -1,7 +1,6 @@
 package com.poc.level1;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,7 +34,7 @@ public class Level1DoctorResource {
         slot2.setEnd(1650);
         slot2.setDoctor(doctorName); 
         
-        List<Slot1> slots = new ArrayList<Slot1>();
+        ArrayList<Slot1> slots = new ArrayList<Slot1>();
         slots.add(slot1);
         slots.add(slot2);
         
