@@ -20,37 +20,42 @@ import com.poc.level3.models.Slot3;
 @RequestMapping("level3/slots")
 public class Level3SlotResource {
 
-    private static String BASE_API_URI = "/level3/slots";
-
     @RequestMapping(method = RequestMethod.POST, value = "{slotId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> bookAppointment(@PathVariable int slotId, @RequestBody BookingDetails3 bookingDetails) {
+    	
     	ResponseEntity<Object> responseEntity = null;
         if (slotId == 1234) {        	
+        	String locationHeaderValue = ServletUriComponentsBuilder.fromCurrentRequest().path("/appointment").build().toUri().toString();
         	MultiValueMap<String, String> httpHeaders = new HttpHeaders();
-        	httpHeaders.add("Location", ServletUriComponentsBuilder.fromCurrentRequest()
-                                    .path("/appointment").build().toUri().toString());
+        	httpHeaders.add("Location", locationHeaderValue);
         	responseEntity = new ResponseEntity<Object>(httpHeaders, HttpStatus.CREATED);
         } else {            
             responseEntity = new ResponseEntity<Object>(HttpStatus.CONFLICT);
         }
+        
         return responseEntity;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "{slotId}/appointment", produces = "application/hal+json")
     public ResponseEntity<Appointment3> getAppointment(@PathVariable int slotId) {
-    	Slot3 slot = new Slot3().withLink(BASE_API_URI + "/" + slotId);    	
+    	
+    	String baseApiUri = "/level3/slots";
+    			
+    	Slot3 slot = new Slot3();  
+    	slot.setEndpointURI(baseApiUri + "/" + slotId);
         slot.setId(slotId);
         slot.setStart(1400);
         slot.setEnd(1450);
         slot.setDoctor("mjones");        
-        Appointment3 appointment = new Appointment3()
-                            .withSelfLink(BASE_API_URI + "/" + slotId + "/appointment")
-                            .withCancelLink(BASE_API_URI + "/" + slotId + "/appointment")
-                            .withAddTestLink(BASE_API_URI + "/" + slotId + "/tests")
-                            .withReScheduleLink(BASE_API_URI + "/" + slotId)
-                            .withHelpLink(BASE_API_URI + "/" + slotId + "/help/appointment");
+        
+        Appointment3 appointment = new Appointment3();
+		appointment.setCancelEndpointURI(baseApiUri + "/" + slotId + "/appointment");
+		appointment.setAddTestEndpointURI(baseApiUri + "/" + slotId + "/tests");
+		appointment.setRescheduleEndpointURI(baseApiUri + "/" + slotId);
+		appointment.setHelpEndpointURI(baseApiUri + "/" + slotId + "/help/appointment");
         appointment.setSlot(slot);
         appointment.setPatient("jsmith");
+        
         return new ResponseEntity<Appointment3>(appointment, HttpStatus.OK);
     }
 

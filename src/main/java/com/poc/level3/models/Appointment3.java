@@ -1,13 +1,8 @@
 package com.poc.level3.models;
 
-import static com.poc.level3.hateos.Link.SELF;
-import static com.poc.level3.hateos.Link.Type.GET;
-import static com.poc.level3.hateos.Link.Type.POST;
-import static com.poc.level3.hateos.Link.Type.DELETE;
-import static com.poc.level3.hateos.Link.Type.PUT;
-
 import com.poc.level3.hateos.HateosSupport;
-import com.poc.level3.hateos.Link;
+import com.poc.level3.hateos.EndpointURI;
+import com.poc.level3.hateos.HttpMethod;
 
 public class Appointment3 extends HateosSupport {
 
@@ -31,49 +26,32 @@ public class Appointment3 extends HateosSupport {
         this.slot = slot;
     }
 
-    public Appointment3 withSelfLink(String uri) {
-    	Link link = new Link();
-    	link.setUri(uri);
-    	link.setRel(SELF);
-    	link.setType(GET);
-    	addLink(link);
-        return this;
+    public void setCancelEndpointURI(String uri) {
+    	EndpointURI endpointURI = new EndpointURI();
+    	endpointURI.setUri(uri);
+    	endpointURI.setHttpMethod(HttpMethod.DELETE);
+    	addEndpointURI(endpointURI);
     }
 
-    public Appointment3 withCancelLink(String uri) {
-    	Link link = new Link();
-    	link.setUri(uri);
-    	link.setRel("cancel");
-    	link.setType(DELETE);
-    	addLink(link);
-        return this;
+    public void setAddTestEndpointURI(String uri) {
+    	EndpointURI endpointURI = new EndpointURI();
+    	endpointURI.setUri(uri);
+    	endpointURI.setHttpMethod(HttpMethod.PUT);
+    	addEndpointURI(endpointURI);
     }
 
-    public Appointment3 withAddTestLink(String uri) {
-    	Link link = new Link();
-    	link.setUri(uri);
-    	link.setRel("addTest");
-    	link.setType(PUT);
-    	addLink(link);
-        return this;
+    public void setRescheduleEndpointURI(String uri) {
+    	EndpointURI endpointURI = new EndpointURI();
+    	endpointURI.setUri(uri);
+    	endpointURI.setHttpMethod(HttpMethod.POST);
+    	addEndpointURI(endpointURI);
     }
 
-    public Appointment3 withReScheduleLink(String uri) {
-    	Link link = new Link();
-    	link.setUri(uri);
-    	link.setRel("reSchedule");
-    	link.setType(POST);
-    	addLink(link);
-        return this;
-    }
-
-    public Appointment3 withHelpLink(String uri) {        
-    	Link link = new Link();
-    	link.setUri(uri);
-    	link.setRel("help");
-    	link.setType(GET);
-    	addLink(link);
-        return this;
+    public void setHelpEndpointURI(String uri) {        
+    	EndpointURI endpointURI = new EndpointURI();
+    	endpointURI.setUri(uri);
+    	endpointURI.setHttpMethod(HttpMethod.GET);
+    	addEndpointURI(endpointURI);
     }
 
 	@Override

@@ -19,13 +19,16 @@ import com.poc.level1.models.Slot1;
 public class Level1SlotResource {
 
     @RequestMapping(method = RequestMethod.POST, value = "{slotId}/appointment")
-    public Appointment1 bookAppointment(@PathVariable int slotId, @RequestBody BookingDetails1 bookingDetails) {    	
+    public Appointment1 bookAppointment(@PathVariable int slotId, @RequestBody BookingDetails1 bookingDetails) {   
+    	
     	Slot1 slot = new Slot1();
         slot.setId(slotId);
         slot.setDoctor("mjones");
+        
         Appointment1 appointment = new Appointment1();
         appointment.setSlot(slot);
         appointment.setPatient(bookingDetails.getPatient());
+        
         if (slotId == 1234) {
             slot.setStart(1400);
             slot.setEnd(1450);
@@ -35,6 +38,7 @@ public class Level1SlotResource {
             slot.setEnd(1550);
             appointment.setStatus("Slot not available");
         }
+        
         return appointment;
     }
 

@@ -23,21 +23,26 @@ public class Level2DoctorResource {
 
     @RequestMapping(method = RequestMethod.GET, value = "{doctorName}/slots")
     public ResponseEntity<OpenSlotList2> getOpenSlots(@PathVariable String doctorName, @RequestParam String date) {
+    	
     	Slot2 slot1 = new Slot2();
         slot1.setId(1234);
         slot1.setStart(1400);
         slot1.setEnd(1450);
         slot1.setDoctor(doctorName);
+        
         Slot2 slot2 = new Slot2();
         slot2.setId(5678);
         slot2.setStart(1600);
         slot2.setEnd(1650);
         slot2.setDoctor(doctorName); 
-        OpenSlotList2 openSlotList = new OpenSlotList2();
+        
         List<Slot2> slots = new ArrayList<Slot2>();
         slots.add(slot1);
         slots.add(slot2);
+        
+        OpenSlotList2 openSlotList = new OpenSlotList2();        
         openSlotList.setSlots(slots);
+        
         return new ResponseEntity<OpenSlotList2>(openSlotList, HttpStatus.OK);
     }
 

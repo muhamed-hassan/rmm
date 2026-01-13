@@ -23,6 +23,7 @@ public class Level1DoctorResource {
 
     @RequestMapping(method = RequestMethod.POST, value = "{doctorName}")
     public OpenSlotList1 getOpenSlots(@PathVariable String doctorName, @RequestBody OpenSlot1 openSlot) {
+    	
     	Slot1 slot1 = new Slot1();
         slot1.setId(1234);
         slot1.setStart(1400);
@@ -33,11 +34,14 @@ public class Level1DoctorResource {
         slot2.setStart(1600);
         slot2.setEnd(1650);
         slot2.setDoctor(doctorName); 
-        OpenSlotList1 openSlotList = new OpenSlotList1();        
+        
         List<Slot1> slots = new ArrayList<Slot1>();
         slots.add(slot1);
         slots.add(slot2);
+        
+        OpenSlotList1 openSlotList = new OpenSlotList1();                
         openSlotList.setSlots(slots);
+        
         return openSlotList;
     }
 

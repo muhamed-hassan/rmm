@@ -5,21 +5,21 @@ import java.util.List;
 
 public class HateosSupport {
 
-    private List<Link> links = new ArrayList<Link>();
+    private List<EndpointURI> urisOfEndpoints = new ArrayList<EndpointURI>();
 
-    protected void addLink(Link link) {
-    	links.add(link);
+    protected void addEndpointURI(EndpointURI endpointURI) {
+    	urisOfEndpoints.add(endpointURI);
     }
     
-    public List<Link> getLinks() {
-		return links;
+    public List<EndpointURI> getURIsOfEndpoints() {
+		return urisOfEndpoints;
 	}
 
 	@Override
 	public int hashCode() {
 		int prime = 31;
 		int result = 1;
-		result = prime * result + ((links == null) ? 0 : links.hashCode());
+		result = prime * result + ((urisOfEndpoints == null) ? 0 : urisOfEndpoints.hashCode());
 		return result;
 	}
 
@@ -32,10 +32,10 @@ public class HateosSupport {
 		if (getClass() != obj.getClass())
 			return false;
 		HateosSupport other = (HateosSupport) obj;
-		if (links == null) {
-			if (other.links != null)
+		if (urisOfEndpoints == null) {
+			if (other.urisOfEndpoints != null)
 				return false;
-		} else if (!links.equals(other.links))
+		} else if (!urisOfEndpoints.equals(other.urisOfEndpoints))
 			return false;
 		return true;
 	}

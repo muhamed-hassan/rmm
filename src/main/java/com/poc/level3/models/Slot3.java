@@ -1,10 +1,8 @@
 package com.poc.level3.models;
 
-import static com.poc.level3.hateos.Link.SELF;
-import static com.poc.level3.hateos.Link.Type.GET;
-
 import com.poc.level3.hateos.HateosSupport;
-import com.poc.level3.hateos.Link;
+import com.poc.level3.hateos.EndpointURI;
+import com.poc.level3.hateos.HttpMethod;
 
 public class Slot3 extends HateosSupport {
 
@@ -48,13 +46,11 @@ public class Slot3 extends HateosSupport {
         this.doctor = doctor;
     }
     
-    public Slot3 withLink(String uri) {
-    	Link link = new Link();
-    	link.setUri(uri);
-    	link.setRel(SELF);
-    	link.setType(GET);
-    	addLink(link);
-        return this;
+    public void setEndpointURI(String uri) {
+    	EndpointURI endpointURI = new EndpointURI();
+    	endpointURI.setUri(uri);
+    	endpointURI.setHttpMethod(HttpMethod.GET);
+    	addEndpointURI(endpointURI);
     }
 
 	@Override

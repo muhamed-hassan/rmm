@@ -20,25 +20,31 @@ import com.poc.level3.models.Slot3;
     produces = "application/hal+json")
 public class Level3DoctorResource {
 
-    private static String BASE_API_URI = "/level3/doctors";
-
     @RequestMapping(method = RequestMethod.GET, value = "{doctorName}/slots")
     public ResponseEntity<OpenSlotList3> getOpenSlots(@PathVariable String doctorName, @RequestParam String date) {
-    	Slot3 slot1 = new Slot3().withLink(BASE_API_URI + "/1234");
+    	
+    	String baseApiUri = "/level3/doctors";
+    			
+    	Slot3 slot1 = new Slot3();
+    	slot1.setEndpointURI(baseApiUri + "/1234");
     	slot1.setId(1234);
         slot1.setStart(1400);
         slot1.setEnd(1450);
         slot1.setDoctor(doctorName);
-        Slot3 slot2 = new Slot3().withLink(BASE_API_URI + "/5678");    	
+        
+        Slot3 slot2 = new Slot3(); 
+        slot2.setEndpointURI(baseApiUri + "/1234");
     	slot2.setId(5678);
         slot2.setStart(1600);
         slot2.setEnd(1650);
         slot2.setDoctor(doctorName);
+        
         OpenSlotList3 openSlotList = new OpenSlotList3();
         List<Slot3> slots = new ArrayList<Slot3>();
         slots.add(slot1);
         slots.add(slot2);
-        openSlotList.setSlots(slots);        
+        openSlotList.setSlots(slots); 
+        
         return new ResponseEntity<OpenSlotList3>(openSlotList, HttpStatus.OK);
     }
 
