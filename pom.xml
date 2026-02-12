@@ -11,7 +11,7 @@
 		<version>1.0.0.RELEASE</version>
 	</parent>
 
-	<groupId>com.poc</groupId>
+	<groupId>app</groupId>
 	<artifactId>RMM</artifactId>
 	<version>1.0</version>
 
