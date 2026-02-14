@@ -165,8 +165,7 @@ public class CustomerController {
 		/* 
 		 * # What should be done:
 		 * - validating the inputs (customerUpdateModel object)
-		 * - transforming the model into a persistent-entity that will be stored later in the DB
-		 * - calling the domain layer to handle the storage process of the transformed customerUpdateModel
+		 * - calling the domain layer to handle the storage process of the fields in customerUpdateModel object
 		 * - return Http-Status 204-NO_CONTENT that means successful update of a resource in the backend-side
 		 * 
 		 * */
