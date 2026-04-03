@@ -61,7 +61,7 @@ public class BriefCustomerReadModel {
 			return false;
 		}
 		BriefCustomerReadModel other = (BriefCustomerReadModel) object;
-		return nationalId == other.getNationalId();
+		return nationalId.equals(other.getNationalId());
 	}
 	
 }
