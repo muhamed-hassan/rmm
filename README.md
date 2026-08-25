@@ -1,4 +1,4 @@
-#### Please visit the [wiki](https://github.com/muhamed-hassan/rmm/wiki) for more info
+#### Please visit the [wiki](https://github.com/muhamed-hassan/restful_web-service_design/wiki) for more info
 
 ***
 
